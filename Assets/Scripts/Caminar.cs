@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class Caminar : MonoBehaviour
 {
+    public Vector3 moveDir;
+
+
+    public float dashSpeed;
+    public float dashTime;
+    
+
+    [SerializeField] private TrailRenderer tr;
+
+
+    public Transform cam;
+
+
 
     InputHandler _inputHandler;
     private CharacterController controller;
@@ -29,15 +42,25 @@ public class Caminar : MonoBehaviour
         Debug.Log(speed);
         moveVector = Vector2.zero;
         moveVector.x = _inputHandler.Horizontal * speed;
-        
+
+
+        Vector3 dir = new Vector3(moveVector.x, 0, 0).normalized;
+
+
+
+
+
+
         if (moveVector.magnitude > 0)
         {
+            float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             transform.LookAt(transform.position + new Vector3(0, 0, moveVector.x));//mira a un punto
+            moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
         }
 
         if (_inputHandler._dash)
         {
-            speed = 100;
+            StartCoroutine(Dash());
             _inputHandler._dash = false;
         }
         else
@@ -77,7 +100,19 @@ public class Caminar : MonoBehaviour
 
     }
 
+    private IEnumerator Dash()
+    {
+        float startTime = Time.time;
 
+        while(Time.time < startTime + dashTime)
+        {
+            controller.Move(moveDir * dashSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+
+    }
 
    
 
