@@ -14,8 +14,8 @@ public class Caminar : MonoBehaviour
     [SerializeField] private TrailRenderer tr;
 
 
-    public Transform cam;
-
+    public Camera cam;
+    
 
 
     InputHandler _inputHandler;
@@ -33,6 +33,8 @@ public class Caminar : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         _inputHandler = GetComponent<InputHandler>();
+        //cam = Camera.main;
+        
     }
 
     // Update is called once per frame
@@ -53,7 +55,7 @@ public class Caminar : MonoBehaviour
 
         if (moveVector.magnitude > 0)
         {
-            float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
             transform.LookAt(transform.position + new Vector3(0, 0, moveVector.x));//mira a un punto
             moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
         }
