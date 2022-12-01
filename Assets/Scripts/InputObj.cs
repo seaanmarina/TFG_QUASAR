@@ -7,12 +7,14 @@ public class InputObj : MonoBehaviour
 {
    
     public bool _puedeInteraccionar;
+    public bool _cambiodecolor;
 
     
     // Start is called before the first frame update
     void Start()
     {
         _puedeInteraccionar = false;
+        _cambiodecolor = false;
     }
 
     // Update is called once per frame
@@ -29,8 +31,14 @@ public class InputObj : MonoBehaviour
     {
         if (_puedeInteraccionar)
         {
-            Debug.Log("Interaccinando");
+            _cambiodecolor = !_cambiodecolor;
+            Debug.Log(_cambiodecolor);
+
+
         }
+        
+           
+        
 
     }
 
