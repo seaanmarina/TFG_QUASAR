@@ -175,7 +175,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630482555709704229}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &9093686648717959697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,10 +215,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_alone
       objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393617, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5057804474339393620, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 3490802898333912566}
+    - target: {fileID: 5057804474339393620, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393622, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5057804474339393626, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -41,23 +41,27 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         Debug.Log("Connected to Master");
         PhotonNetwork.JoinRandomOrCreateRoom();
+        //contador.contador--;
+        
 
     }
 
     public override void OnJoinedRoom()
     {
+       
         Debug.Log("Joined a room succesfully");
-        Debug.Log(contador.contador);
+     
 
-        if (contador.contador == 1)
+        if (PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.Instantiate(playerPrefab.name, spawn1.position, Quaternion.identity);
-            contador.contador--;
+            Debug.Log("naranja");
+            
         }
-        else
+        else 
         {
             PhotonNetwork.Instantiate(playerPrefab.name, spawn2.position, Quaternion.identity);
-            contador.contador--;
+            Debug.Log("azul");
         }
 
 

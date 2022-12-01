@@ -7,6 +7,7 @@ public class InputHandler : MonoBehaviour
 {
     public bool _dash;
     public bool _salto;
+    public bool _puedeInteraccionar;
 
     public float Horizontal => _movement.x;
     public float Vertical => _movement.y;
@@ -43,5 +44,8 @@ public class InputHandler : MonoBehaviour
         Debug.Log("dash");
         _dash = true;
     }
+
+
+    
 
 }

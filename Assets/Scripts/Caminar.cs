@@ -17,9 +17,9 @@ public class Caminar : MonoBehaviour
     PhotonView view;
 
     public Camera cam;
-    
 
 
+   // public GameObject ObjetoControllador;
     InputHandler _inputHandler;
     private CharacterController controller;
     private Vector2 moveVector;
@@ -51,7 +51,7 @@ public class Caminar : MonoBehaviour
         if (view.IsMine)
         {
 
-            Debug.Log(speed);
+           // Debug.Log(speed);
             moveVector = Vector2.zero;
             moveVector.x = _inputHandler.Horizontal * speed;
 
