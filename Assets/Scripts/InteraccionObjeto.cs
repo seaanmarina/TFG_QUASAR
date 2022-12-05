@@ -6,16 +6,19 @@ public class InteraccionObjeto : MonoBehaviour
 {
     public GameObject ObjetoACambiar;
     public GameObject ControlObjeto;
+    public GameObject ControlDelCambio;
     InputObj _inputobj;
     Material Material1;
     public Material original;
     public Material cambio;
+    Color_Controlador controladordelcambio;
     // Start is called before the first frame update
     void Start()
     {
         _inputobj = ControlObjeto.GetComponent<InputObj>();
         Material1 = ObjetoACambiar.GetComponent<Renderer>().material;
-      
+        controladordelcambio = ControlDelCambio.GetComponent<Color_Controlador>();
+
     }
 
     // Update is called once per frame
@@ -34,15 +37,15 @@ public class InteraccionObjeto : MonoBehaviour
 
             if (_inputobj._cambiodecolor)
             {
-                Material1.color = cambio.color;
+                controladordelcambio.cambio = true;
                 Debug.Log("estoy interaccoinando a tope de power");
             }
             else
             {
-                Material1.color = original.color;
+                controladordelcambio.cambio = false;
             }
 
-
+            
         }
     }
 }

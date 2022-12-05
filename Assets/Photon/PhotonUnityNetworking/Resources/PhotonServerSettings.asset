@@ -36,6 +36,11 @@ MonoBehaviour:
   RpcList:
   - ClickRpc
   - DestroyRpc
+  - RPC_changeReadyState
+  - RPC_ChangeReadyState
+  - OnTriggerEnter
+  - Contador
+  - OnTriggerStay
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
