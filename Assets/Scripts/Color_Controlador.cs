@@ -11,12 +11,22 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
     Material Material1;
     public Material original;
     public Material cambiar;
+    public Material blanco;
+
+    private int puederestar;
+    private int puedesumar;
+
+    public GameObject ObjetoContadorBlanca;
+    Control_Blanca control_blanca;
 
     // Start is called before the first frame update
     void Start()
     {
         Material1 = ObjetoACambiar.GetComponent<Renderer>().material;
         cambio = false;
+        control_blanca = ObjetoContadorBlanca.GetComponent<Control_Blanca>();
+        puedesumar = 1;
+        puederestar = 0;
     }
 
     // Update is called once per frame
@@ -32,10 +42,34 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
     [PunRPC]
     void cambiocontrolador()
     {
-        if (cambio)
+        if (cambio && (control_blanca.contadorBlanca != 2))
         {
             Material1.color = cambiar.color;
+            
+            
+            for (int i = 0; i < puedesumar; i++)
+            {
+                control_blanca.contadorBlanca++;
+                puederestar++;
+                puedesumar--;
+            }
         }
+        else if(!cambio && (control_blanca.contadorBlanca != 2))
+        {
+            Material1.color = original.color;
+
+            for (int i = 0; i < puederestar; i++)
+            {
+                control_blanca.contadorBlanca--;
+                puederestar--;
+                puedesumar++;
+            }
+        }
+        else if(cambio && (control_blanca.contadorBlanca == 2))
+        {
+            Material1.color = blanco.color;
+        }
+
         else
         {
             Material1.color = original.color;

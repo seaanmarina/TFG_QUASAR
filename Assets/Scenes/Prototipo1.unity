@@ -828,6 +828,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &537349078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537349079}
+  - component: {fileID: 537349080}
+  m_Layer: 0
+  m_Name: Control_luz_blanca
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &537349079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537349078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -31.541386, y: -10.272747, z: 15.150131}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &537349080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537349078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ae213d42a9543f4984d98c0011e507f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contadorBlanca: 0
 --- !u!1 &568638939
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +1004,8 @@ MonoBehaviour:
   ObjetoACambiar: {fileID: 0}
   original: {fileID: 0}
   cambiar: {fileID: 0}
+  blanco: {fileID: 0}
+  ObjetoContadorBlanca: {fileID: 0}
 --- !u!4 &605285301
 Transform:
   m_ObjectHideFlags: 0
@@ -1712,6 +1759,8 @@ MonoBehaviour:
   ObjetoACambiar: {fileID: 916786894}
   original: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
   cambiar: {fileID: 2100000, guid: 1b209e0737e1db1449eec575f29f5097, type: 2}
+  blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  ObjetoContadorBlanca: {fileID: 537349078}
 --- !u!114 &1509881927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1861,6 +1910,8 @@ MonoBehaviour:
   ObjetoACambiar: {fileID: 259715463}
   original: {fileID: 2100000, guid: 1b209e0737e1db1449eec575f29f5097, type: 2}
   cambiar: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
+  blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  ObjetoContadorBlanca: {fileID: 537349078}
 --- !u!114 &1532392535
 MonoBehaviour:
   m_ObjectHideFlags: 0
