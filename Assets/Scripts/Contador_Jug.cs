@@ -16,6 +16,6 @@ public class Contador_Jug : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(contador + "contador");
+        //Debug.Log(contador + "contador");
     }
 }

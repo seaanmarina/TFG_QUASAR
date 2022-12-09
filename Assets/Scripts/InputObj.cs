@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class InputObj : MonoBehaviour
+public class InputObj : MonoBehaviourPunCallbacks
 {
    
     public bool _puedeInteraccionar;
@@ -25,16 +27,16 @@ public class InputObj : MonoBehaviour
 
     }
 
-   
-   
 
 
+
+    [PunRPC]
     void OnInteraccionar()
     {
         if (_puedeInteraccionar)
         {
             Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-            _cambiodecolor = !_cambiodecolor;
+            base.photonView.RPC("cambiodecolor", RpcTarget.All);
             Debug.Log(_cambiodecolor);
 
 
@@ -43,6 +45,12 @@ public class InputObj : MonoBehaviour
            
         
 
+    }
+
+    [PunRPC]
+    void cambiodecolor()
+    {
+        _cambiodecolor = !_cambiodecolor;
     }
 
     void OnPrueba()

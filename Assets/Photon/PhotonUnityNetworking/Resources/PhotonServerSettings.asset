@@ -41,6 +41,12 @@ MonoBehaviour:
   - OnTriggerEnter
   - Contador
   - OnTriggerStay
+  - Update
+  - CambioColor
+  - CambioColorApagar
+  - OnInteraccionar
+  - cambiodecolor
+  - cambiocontrolador
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -61,7 +61,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         else 
         {
             PhotonNetwork.Instantiate(playerPrefab.name, spawn2.position, Quaternion.identity);
-            Debug.Log("azul");
+           // Debug.Log("azul");
         }
 
 
