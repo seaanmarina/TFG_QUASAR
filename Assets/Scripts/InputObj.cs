@@ -30,14 +30,15 @@ public class InputObj : MonoBehaviourPunCallbacks
 
 
 
-    [PunRPC]
+   [PunRPC]
     void OnInteraccionar()
     {
-        if (_puedeInteraccionar)
+        if (_puedeInteraccionar )
         {
+           // _cambiodecolor = !_cambiodecolor;
             Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
             base.photonView.RPC("cambiodecolor", RpcTarget.All);
-            Debug.Log(_cambiodecolor);
+           // Debug.Log(_cambiodecolor);
 
 
         }

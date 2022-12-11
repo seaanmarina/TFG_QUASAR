@@ -18,5 +18,8 @@ public class Control_Blanca : MonoBehaviour
     void Update()
     {
         Debug.Log(contadorBlanca);
+
+
+
     }
 }

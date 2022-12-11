@@ -33,47 +33,48 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
     [PunRPC]
     void Update()
     {
-        Debug.Log(cambio + "estado del cambio del color, si es true es cambio");
+       // Debug.Log(cambio + "estado del cambio del color, si es true es cambio");
 
         base.photonView.RPC("cambiocontrolador", RpcTarget.All);
+        Debug.Log(cambio);
+
+       // Debug.Log(control_blanca.contadorBlanca);
       
     }
 
     [PunRPC]
     void cambiocontrolador()
     {
-        if (cambio && (control_blanca.contadorBlanca != 2))
+        if (cambio)
         {
+            Debug.Log("dentro del if");
             Material1.color = cambiar.color;
             
             
-            for (int i = 0; i < puedesumar; i++)
+           /* for (int i = 0; i < puedesumar; i++)
             {
+                Debug.Log("estoy dentro de pulsar y sumar uno al contador de blanca");
                 control_blanca.contadorBlanca++;
                 puederestar++;
                 puedesumar--;
-            }
+               // Debug.Log(puedesumar + "puede sumar");
+                Debug.Log(control_blanca.contadorBlanca + "controlador");
+            }*/
         }
-        else if(!cambio && (control_blanca.contadorBlanca != 2))
+        else 
         {
             Material1.color = original.color;
 
-            for (int i = 0; i < puederestar; i++)
+           /* for (int i = 0; i < puederestar; i++)
             {
+                Debug.Log("estoy dentro de no pulsar y sumar uno al contador de blanca");
                 control_blanca.contadorBlanca--;
                 puederestar--;
                 puedesumar++;
-            }
+                Debug.Log(control_blanca.contadorBlanca + " controlador al salir");
+            }*/
         }
-        else if(cambio && (control_blanca.contadorBlanca == 2))
-        {
-            Material1.color = blanco.color;
-        }
-
-        else
-        {
-            Material1.color = original.color;
-        }
+        
     }
 
 }
