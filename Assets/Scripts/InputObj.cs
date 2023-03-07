@@ -7,9 +7,8 @@ using Photon.Realtime;
 
 public class InputObj : MonoBehaviourPunCallbacks
 {
-     Puede_Interaccionar puede;
-    GameObject interaccion;
-
+    public Puede_Interaccionar puede;
+    
     public bool _puedeInteraccionar;
     public bool _cambiodecolor;
     public bool _prueba;
@@ -19,10 +18,7 @@ public class InputObj : MonoBehaviourPunCallbacks
     [PunRPC]
     void Start()
     {
-        interaccion = GameObject.FindGameObjectWithTag("PUEDE");
-        puede = interaccion.GetComponent<Puede_Interaccionar>();
-
-
+        puede = GetComponent<Puede_Interaccionar>();
         _puedeInteraccionar = false;
         _cambiodecolor = false;
         _prueba = false;
@@ -31,26 +27,23 @@ public class InputObj : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        OnInteraccionarObj();
+
     }
 
 
 
 
    [PunRPC]
-    void OnInteraccionarObj()
+    void OnInteraccionar()
     {
-      
-         if (_puedeInteraccionar)
-            {
-                
-                        // _cambiodecolor = !_cambiodecolor;
-                        // Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-                        base.photonView.RPC("cambiodecolor", RpcTarget.All);
-                        //// Debug.Log(_cambiodecolor);
+        if (_puedeInteraccionar )
+        {
+           // _cambiodecolor = !_cambiodecolor;
+           // Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+           base.photonView.RPC("cambiodecolor", RpcTarget.All);
+           //// Debug.Log(_cambiodecolor);
 
 
-                   
         }
         
            
@@ -61,7 +54,7 @@ public class InputObj : MonoBehaviourPunCallbacks
     [PunRPC]
     void cambiodecolor()
     {
-        _cambiodecolor = puede._puede;
+        _cambiodecolor = !_cambiodecolor;
     }
 
     void OnPrueba()

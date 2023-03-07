@@ -12,8 +12,6 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
     Puede_Interaccionar puede;
     public GameObject interaccion;
 
-
-
     InputObj _inputobj;
     Material Material1;
     public Material original;
