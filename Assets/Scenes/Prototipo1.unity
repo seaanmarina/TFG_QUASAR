@@ -689,6 +689,7 @@ GameObject:
   - component: {fileID: 259715466}
   - component: {fileID: 259715465}
   - component: {fileID: 259715464}
+  - component: {fileID: 259715469}
   m_Layer: 0
   m_Name: CuboAzul
   m_TagString: Untagged
@@ -712,7 +713,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents: []
   sceneViewId: 11
@@ -797,6 +798,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &259715469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259715463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f63ed00fe4dc145a5b1fa88ba13002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _puede: 0
 --- !u!1 &325671502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,6 +1055,74 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents: []
   sceneViewId: 6
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!1 &633987594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 633987595}
+  - component: {fileID: 633987596}
+  - component: {fileID: 633987597}
+  m_Layer: 0
+  m_Name: Contr_Puede_int
+  m_TagString: PUEDE
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &633987595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633987594}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -47.951054, y: -1.9650288, z: 2.3902228}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &633987596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633987594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f63ed00fe4dc145a5b1fa88ba13002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _puede: 0
+--- !u!114 &633987597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633987594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 5
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &705507993
@@ -1668,10 +1750,9 @@ GameObject:
   - component: {fileID: 1509881922}
   - component: {fileID: 1509881925}
   - component: {fileID: 1509881926}
-  - component: {fileID: 1509881928}
   - component: {fileID: 1509881927}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: AzulCuboGameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1741,6 +1822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjetoACambiar: {fileID: 916786894}
   ControlObjeto: {fileID: 1556391104}
+  interaccion: {fileID: 259715463}
   original: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
   cambio: {fileID: 2100000, guid: 1b209e0737e1db1449eec575f29f5097, type: 2}
 --- !u!114 &1509881926
@@ -1776,36 +1858,6 @@ MonoBehaviour:
   _puedeInteraccionar: 0
   _cambiodecolor: 0
   _prueba: 0
---- !u!114 &1509881928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509881920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 12d008e371e960e449058aa4b02e263e, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: New action map
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1532392529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,11 +1870,10 @@ GameObject:
   - component: {fileID: 1532392531}
   - component: {fileID: 1532392532}
   - component: {fileID: 1532392533}
-  - component: {fileID: 1532392535}
   - component: {fileID: 1532392534}
-  - component: {fileID: 1532392536}
+  - component: {fileID: 1532392537}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: NaranjaCuboGameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1870,6 +1921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjetoACambiar: {fileID: 259715463}
   ControlObjeto: {fileID: 1556391104}
+  interaccion: {fileID: 259715463}
   original: {fileID: 2100000, guid: 1b209e0737e1db1449eec575f29f5097, type: 2}
   cambio: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
 --- !u!114 &1532392533
@@ -1912,7 +1964,7 @@ MonoBehaviour:
   cambiar: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
   blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
   ObjetoContadorBlanca: {fileID: 537349078}
---- !u!114 &1532392535
+--- !u!114 &1532392537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1927,36 +1979,6 @@ MonoBehaviour:
   _puedeInteraccionar: 0
   _cambiodecolor: 0
   _prueba: 0
---- !u!114 &1532392536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1532392529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 12d008e371e960e449058aa4b02e263e, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: New action map
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1545797622
 GameObject:
   m_ObjectHideFlags: 0
