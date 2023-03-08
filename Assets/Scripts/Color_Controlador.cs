@@ -19,6 +19,9 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
     public GameObject ObjetoContadorBlanca;
     Control_Blanca control_blanca;
 
+
+    PhotonView pv;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,7 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
         control_blanca = ObjetoContadorBlanca.GetComponent<Control_Blanca>();
         puedesumar = 1;
         puederestar = 0;
+       
     }
 
     // Update is called once per frame
@@ -47,19 +51,20 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
     {
         if (cambio)
         {
+            PhotonView pv = gameObject.GetComponent<PhotonView>();
             Debug.Log("dentro del if");
             Material1.color = cambiar.color;
-            
-            
-           /* for (int i = 0; i < puedesumar; i++)
-            {
-                Debug.Log("estoy dentro de pulsar y sumar uno al contador de blanca");
-                control_blanca.contadorBlanca++;
-                puederestar++;
-                puedesumar--;
-               // Debug.Log(puedesumar + "puede sumar");
-                Debug.Log(control_blanca.contadorBlanca + "controlador");
-            }*/
+            pv.RPC("cambiocontroladorotro", RpcTarget.All);
+
+            /* for (int i = 0; i < puedesumar; i++)
+             {
+                 Debug.Log("estoy dentro de pulsar y sumar uno al contador de blanca");
+                 control_blanca.contadorBlanca++;
+                 puederestar++;
+                 puedesumar--;
+                // Debug.Log(puedesumar + "puede sumar");
+                 Debug.Log(control_blanca.contadorBlanca + "controlador");
+             }*/
         }
         else 
         {
@@ -77,4 +82,12 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
         
     }
 
-}
+    [PunRPC]
+    void cambiocontroladorotro()
+    {
+        Material1.color = cambiar.color;
+
+
+    }
+
+    }
