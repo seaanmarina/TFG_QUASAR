@@ -35,7 +35,7 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
     {
        // Debug.Log(cambio + "estado del cambio del color, si es true es cambio");
 
-        base.photonView.RPC("cambiocontrolador", RpcTarget.All);
+        //base.photonView.RPC("cambiocontrolador", RpcTarget.All);
         Debug.Log(cambio);
 
        // Debug.Log(control_blanca.contadorBlanca);

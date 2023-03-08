@@ -33,34 +33,34 @@ public class InputObj : MonoBehaviourPunCallbacks
 
 
 
-   [PunRPC]
-    void OnInteraccionar()
-    {
-        if (_puedeInteraccionar )
-        {
-           // _cambiodecolor = !_cambiodecolor;
-           // Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-           base.photonView.RPC("cambiodecolor", RpcTarget.All);
-           //// Debug.Log(_cambiodecolor);
+   //[PunRPC]
+   // void OnInteraccionar()
+   // {
+   //     if (_puedeInteraccionar )
+   //     {
+   //        // _cambiodecolor = !_cambiodecolor;
+   //        // Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+   //        base.photonView.RPC("cambiodecolor", RpcTarget.All);
+   //        //// Debug.Log(_cambiodecolor);
 
 
-        }
+   //     }
         
            
         
 
-    }
+   // }
 
-    [PunRPC]
-    void cambiodecolor()
-    {
-        _cambiodecolor = !_cambiodecolor;
-    }
+   // [PunRPC]
+   // void cambiodecolor()
+   // {
+   //     _cambiodecolor = !_cambiodecolor;
+   // }
 
-    void OnPrueba()
-    {
-        Debug.Log("Se hace la prueba");
-        _prueba = true;
-    }
+   // void OnPrueba()
+   // {
+   //     Debug.Log("Se hace la prueba");
+   //     _prueba = true;
+   // }
 
 }

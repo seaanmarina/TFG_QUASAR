@@ -8,6 +8,7 @@ using Photon.Realtime;
 public class InputHandler : MonoBehaviour
 {
     public bool _dash;
+    public bool jugadorinteraccion;
     public bool _salto;
     public bool _puedeInteraccionar;
     PhotonView view;
@@ -19,15 +20,16 @@ public class InputHandler : MonoBehaviour
     Puede_Interaccionar permitido;
      GameObject interaccion;
 
-
+    Input_player input_player;
+    public GameObject input;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        interaccion = GameObject.FindGameObjectWithTag("PUEDE");
-        permitido = interaccion.GetComponent<Puede_Interaccionar>();
 
+        input = GameObject.FindGameObjectWithTag("Input");
+        input_player = input.GetComponent<Input_player>();
 
 
 
@@ -63,16 +65,27 @@ public class InputHandler : MonoBehaviour
     }
 
 
-
+    [PunRPC]
     void OnInteraccionar()
     {
-        if (!view.IsMine) {
-            permitido._puede = !permitido._puede;
-            _puedeInteraccionar = !_puedeInteraccionar;
 
-
+        if (view.IsMine)
+        {
+            input_player._input = !input_player._input;
         }
-           
+
+
+        //if (_puedeInteraccionar && view.IsMine)
+        //{
+
+        //    jugadorinteraccion = !jugadorinteraccion;
+        //    // _cambiodecolor = !_cambiodecolor;
+        //    // Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+        //    //  base.photonView.RPC("cambiodecolor", RpcTarget.All);
+        //    //// Debug.Log(_cambiodecolor);
+
+
+        //}
 
 
 

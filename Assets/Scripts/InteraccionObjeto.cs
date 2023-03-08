@@ -9,8 +9,13 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
     public GameObject ObjetoACambiar;
     public GameObject ControlObjeto;
 
+    
+
     Puede_Interaccionar puede;
     public GameObject interaccion;
+
+    Input_player input_player;
+    public GameObject input;
 
     InputObj _inputobj;
     Material Material1;
@@ -24,6 +29,16 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
     [PunRPC]
     void Start()
     {
+        
+
+
+
+        input = GameObject.FindGameObjectWithTag("Input");
+        input_player = input.GetComponent<Input_player>();
+
+        //player = GameObject.FindGameObjectWithTag("Player");
+        //inputhandler = player.GetComponent<InputHandler>();
+
 
         puede = interaccion.GetComponent<Puede_Interaccionar>();
 
@@ -36,26 +51,30 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+
+    
+
+        // Update is called once per frame
+    //    void Update()
+    //{
+    //    player = GameObject.FindGameObjectWithTag("Player");
+    //    inputhandler = player.GetComponent<InputHandler>();
+    //}
 
     [PunRPC]
     private void OnTriggerStay(Collider other)
     {
         PhotonView phView = other.gameObject.GetComponent<PhotonView>();
         // Debug.Log(owner.Controller.ActorNumber + "es el controlador del objeto");
-        if (phView.IsMine)
+        //if (phView.IsMine)
+        if(PhotonNetwork.LocalPlayer.ActorNumber == other.GetComponent<PhotonView>().Owner.ActorNumber)
             {
 
             owner.TransferOwnership(PhotonNetwork.LocalPlayer.ActorNumber);
             owner.TransferOwnership(PhotonNetwork.LocalPlayer);
             Debug.Log(owner.Controller.ActorNumber + "es el controlador del objeto" + gameObject.name);
                 Debug.Log(PhotonNetwork.LocalPlayer.ActorNumber + "id del jugador");
-
-
 
             //if (owner.Controller.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber)
             //{
@@ -75,21 +94,22 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
             //    base.photonView.RPC("CambioColor", RpcTarget.All);
 
             //}
-
+            PhotonView pv = gameObject.GetComponent<PhotonView>();
 
             //if () {
             //    // Debug.Log("puede interaccioar");
-            
+            input_player._puedeInteraccionar = true;
             //_inputobj._puedeInteraccionar = true;
             PhotonView photonView = PhotonView.Get(this);
-            this.photonView.RPC("prueba", RpcTarget.All, true);
+            //this.photonView.RPC("prueba", RpcTarget.All);
 
             //if (_inputobj._cambiodecolor)
             //{
-            controladordelcambio.cambio = _inputobj._cambiodecolor;
+           // controladordelcambio.cambio = _inputobj._cambiodecolor;
             Debug.Log("estoy interaccoinando a tope de power");
 
-            
+            controladordelcambio.cambio = input_player._jugadorinteraccion;
+            pv.RPC("cambiocontrolador", RpcTarget.All);
             //this.photonView.RPC("CambioColor", RpcTarget.All);
             //}
 
@@ -102,14 +122,14 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
 
 
 
-    [PunRPC]
-    void prueba(bool valor)
-    {
-        _inputobj._puedeInteraccionar = true;
+    //[PunRPC]
+    //void prueba()
+    //{
+    //    input_player._puedeInteraccionar = true;
         
-        this.photonView.RPC("CambioColor", RpcTarget.All);
+    //    this.photonView.RPC("CambioColor", RpcTarget.All);
 
-    }
+    //}
 
 
 
@@ -117,18 +137,19 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
     [PunRPC]
     private void OnTriggerExit(Collider other)
     {
-        _inputobj._puedeInteraccionar = false;
+        input_player._puedeInteraccionar = false;
     }
 
     [PunRPC]
     void CambioColor()
     {
 
-        Debug.Log(_inputobj._puedeInteraccionar + "HOLA QUE TAL BIEN ME ALEGRO");
+        Debug.Log(input_player._puedeInteraccionar + "Puede Interaccionar" + PhotonNetwork.LocalPlayer.ActorNumber);
+        Debug.Log(input_player._input + "Input" + PhotonNetwork.LocalPlayer.ActorNumber);
         //if (valor)
         //{
-
-        controladordelcambio.cambio = _inputobj._cambiodecolor;
+        
+       // controladordelcambio.cambio = input_player._jugadorinteraccion;
 
 
         //if (_inputobj._cambiodecolor)

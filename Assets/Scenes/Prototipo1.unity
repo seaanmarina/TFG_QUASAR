@@ -1301,6 +1301,53 @@ MonoBehaviour:
   sceneViewId: 4
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!1 &802376916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 802376917}
+  - component: {fileID: 802376918}
+  m_Layer: 0
+  m_Name: Input_Inter_player
+  m_TagString: Input
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &802376917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802376916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -38.644108, y: 1.8488712, z: 3.800838}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &802376918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802376916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e187b0ca0a78ae448f0a1cbf6711194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _puedeInteraccionar: 0
+  _input: 0
+  _jugadorinteraccion: 0
 --- !u!1 &870943607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,8 +1797,6 @@ GameObject:
   - component: {fileID: 1509881922}
   - component: {fileID: 1509881925}
   - component: {fileID: 1509881926}
-  - component: {fileID: 1509881928}
-  - component: {fileID: 1509881927}
   m_Layer: 0
   m_Name: AzulCuboGameObject
   m_TagString: Untagged
@@ -1824,6 +1869,7 @@ MonoBehaviour:
   ObjetoACambiar: {fileID: 916786894}
   ControlObjeto: {fileID: 1556391104}
   interaccion: {fileID: 259715463}
+  input: {fileID: 0}
   original: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
   cambio: {fileID: 2100000, guid: 1b209e0737e1db1449eec575f29f5097, type: 2}
 --- !u!114 &1509881926
@@ -1844,52 +1890,6 @@ MonoBehaviour:
   cambiar: {fileID: 2100000, guid: 1b209e0737e1db1449eec575f29f5097, type: 2}
   blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
   ObjetoContadorBlanca: {fileID: 537349078}
---- !u!114 &1509881927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509881920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5021c685288e97e49b83ba77a3bb57d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puede: {fileID: 0}
-  _puedeInteraccionar: 0
-  _cambiodecolor: 0
-  _prueba: 0
---- !u!114 &1509881928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1509881920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 12d008e371e960e449058aa4b02e263e, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: New action map
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1532392529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,8 +1903,6 @@ GameObject:
   - component: {fileID: 1532392532}
   - component: {fileID: 1532392533}
   - component: {fileID: 1532392534}
-  - component: {fileID: 1532392537}
-  - component: {fileID: 1532392536}
   m_Layer: 0
   m_Name: NaranjaCuboGameObject
   m_TagString: Untagged
@@ -1955,6 +1953,7 @@ MonoBehaviour:
   ObjetoACambiar: {fileID: 259715463}
   ControlObjeto: {fileID: 1556391104}
   interaccion: {fileID: 259715463}
+  input: {fileID: 0}
   original: {fileID: 2100000, guid: 1b209e0737e1db1449eec575f29f5097, type: 2}
   cambio: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
 --- !u!114 &1532392533
@@ -1997,52 +1996,6 @@ MonoBehaviour:
   cambiar: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
   blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
   ObjetoContadorBlanca: {fileID: 537349078}
---- !u!114 &1532392536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1532392529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 12d008e371e960e449058aa4b02e263e, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: New action map
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &1532392537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1532392529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5021c685288e97e49b83ba77a3bb57d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puede: {fileID: 0}
-  _puedeInteraccionar: 0
-  _cambiodecolor: 0
-  _prueba: 0
 --- !u!1 &1545797622
 GameObject:
   m_ObjectHideFlags: 0
