@@ -73,8 +73,8 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
 
             owner.TransferOwnership(PhotonNetwork.LocalPlayer.ActorNumber);
             owner.TransferOwnership(PhotonNetwork.LocalPlayer);
-            Debug.Log(owner.Controller.ActorNumber + "es el controlador del objeto" + gameObject.name);
-                Debug.Log(PhotonNetwork.LocalPlayer.ActorNumber + "id del jugador");
+           // Debug.Log(owner.Controller.ActorNumber + "es el controlador del objeto" + gameObject.name);
+             //   Debug.Log(PhotonNetwork.LocalPlayer.ActorNumber + "id del jugador");
 
             //if (owner.Controller.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber)
             //{
@@ -106,7 +106,7 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
             //if (_inputobj._cambiodecolor)
             //{
            // controladordelcambio.cambio = _inputobj._cambiodecolor;
-            Debug.Log("estoy interaccoinando a tope de power");
+            //Debug.Log("estoy interaccoinando a tope de power");
 
             controladordelcambio.cambio = input_player._jugadorinteraccion;
             pv.RPC("cambiocontrolador", RpcTarget.All);
