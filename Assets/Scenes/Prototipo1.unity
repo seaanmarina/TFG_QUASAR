@@ -1042,6 +1042,7 @@ MonoBehaviour:
   original: {fileID: 0}
   cambiar: {fileID: 0}
   blanco: {fileID: 0}
+  controlador_blanca: {fileID: 0}
   ObjetoContadorBlanca: {fileID: 0}
 --- !u!4 &605285301
 Transform:
@@ -1936,6 +1937,7 @@ MonoBehaviour:
   original: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
   cambiar: {fileID: 2100000, guid: 1b209e0737e1db1449eec575f29f5097, type: 2}
   blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  controlador_blanca: {fileID: 537349078}
   ObjetoContadorBlanca: {fileID: 537349078}
 --- !u!1 &1532392529
 GameObject:
@@ -2042,6 +2044,7 @@ MonoBehaviour:
   original: {fileID: 2100000, guid: 1b209e0737e1db1449eec575f29f5097, type: 2}
   cambiar: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
   blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  controlador_blanca: {fileID: 537349078}
   ObjetoContadorBlanca: {fileID: 537349078}
 --- !u!1 &1545797622
 GameObject:
