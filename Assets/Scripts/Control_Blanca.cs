@@ -7,6 +7,7 @@ using Photon.Realtime;
 public class Control_Blanca : MonoBehaviourPunCallbacks
 {
     public int contadorBlanca;
+    public int mantenerAltar;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class Control_Blanca : MonoBehaviourPunCallbacks
     [PunRPC]
     void Update()
     {
-        Debug.Log(contadorBlanca + "CONTAAADOOOR" );
+        Debug.Log(mantenerAltar + "CONTAAADOOOR" );
 
 
 

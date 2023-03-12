@@ -24,6 +24,10 @@ public class InputHandler : MonoBehaviour
     public GameObject input;
 
 
+    InputAltar input_Altar;
+    public GameObject inputaltar;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +35,8 @@ public class InputHandler : MonoBehaviour
         input = GameObject.FindGameObjectWithTag("Input");
         input_player = input.GetComponent<Input_player>();
 
-
+        inputaltar = GameObject.FindGameObjectWithTag("inputAltar");
+        input_Altar = inputaltar.GetComponent<InputAltar>();
 
         _salto = false;
         view = GetComponent<PhotonView>();
@@ -72,6 +77,7 @@ public class InputHandler : MonoBehaviour
         if (view.IsMine)
         {
             input_player._input = !input_player._input;
+            input_Altar._input = !input_Altar._input;
         }
 
 
