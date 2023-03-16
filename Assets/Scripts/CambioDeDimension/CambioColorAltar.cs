@@ -18,6 +18,11 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
     private int puederestar;
     private int puedesumar;
 
+    private bool alreadyExited;
+
+
+    CambioDimension cambio_Dimension;
+    public GameObject change;
 
 
     public GameObject controlador_blanca;
@@ -32,6 +37,12 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
     void Start()
     {
 
+        alreadyExited = false;
+
+        change = GameObject.FindGameObjectWithTag("CambioDimension");
+        cambio_Dimension = change.GetComponent<CambioDimension>();
+
+
         controlblanca = controlador_blanca.GetComponent<Control_Blanca>();
         mantener = false;
 
@@ -43,12 +54,20 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
         puedesumar = 1;
         puederestar = 0;
 
+
+
     }
 
     // Update is called once per frame
     [PunRPC]
     void Update()
     {
+        //if (!cambio && !mantener)
+        //{
+        //    PhotonView pv = gameObject.GetComponent<PhotonView>();
+
+        //    pv.RPC("cambiocontrolador", RpcTarget.All);
+        //}
         // Debug.Log(cambio + "estado del cambio del color, si es true es cambio");
 
         //base.photonView.RPC("cambiocontrolador", RpcTarget.All);
@@ -59,12 +78,72 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
+    void OnTriggerStay(Collider other)
+    {
+        if (PhotonNetwork.LocalPlayer.ActorNumber == other.GetComponent<PhotonView>().Owner.ActorNumber)
+        {
+            if (mantener)
+            {
+                cambio_Dimension.puedeintCambiar = true;
+                if (cambio_Dimension.permitidoCambiar)
+                {
+                    other.transform.position = new Vector3(0, 0, 0);
+                    cambio_Dimension.permitidoCambiar = false;
+                    cambio = false;
+                    mantener = false;
+                    Debug.Log("Estoy dentro de if de mantener");
+                }
+            }
+            else
+            {
+                cambio_Dimension.puedeintCambiar = false;
+                Debug.Log("Estoy dentro de else mantener");
+            }
+
+           
+
+
+        }
+
+        }
+
+    [PunRPC]
+     void OnTriggerExit(Collider other)
+    {
+
+        
+        if (PhotonNetwork.LocalPlayer.ActorNumber == other.GetComponent<PhotonView>().Owner.ActorNumber)
+        {
+            mantener = false;
+            cambio = false;
+            Debug.Log("Estoy fuera de trigger de mantener");
+
+            if (alreadyExited)
+                return;
+
+            EjecutarTriggerExitRPC();
+
+            alreadyExited = true;
+        }
+        }
+
+
+    void EjecutarTriggerExitRPC()
+    {
+        // Llama a la función OnTriggerExit en todos los clientes
+        photonView.RPC("OnTriggerExit", RpcTarget.All);
+    }
+
+
+
+    [PunRPC]
     void cambiocontrolador()
     {
         if (controlblanca.mantenerAltar >= 2 || mantener==true)
         {
             mantener = true;
-            Debug.Log(mantener + "HA ENRTADO EN EL COLOR BLANCO");
+            //Debug.Log(mantener + "HA ENRTADO EN EL COLOR BLANCO");
+            Debug.Log("Estoy dentro de empezar corrutina");
 
             PhotonView pv = gameObject.GetComponent<PhotonView>();
    
@@ -94,11 +173,13 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
                 // Debug.Log(puedesumar + "puede sumar");
                  Debug.Log(control_blanca.contadorBlanca + "controlador");
              }*/
+
+                
         }
         else
         {
 
-                Debug.Log("Cambio else");
+                Debug.Log("Estoy dentro de else normal mantener");
             Material1.color = original.color;
             Material2.color = original.color;
 
@@ -121,7 +202,7 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
     {
         Material1.color = cambiar.color;
         Material2.color = cambiar.color;
-        Debug.Log("Cambio colorrr");
+        Debug.Log("Estoy dentro del cambio de color por el cambio");
 
     }
 
@@ -134,7 +215,7 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
         
         //Material1.color = cambiar.color;
         //Material2.color = cambiar.color;
-        Debug.Log("He entrado en el cambiocontrolador  BLANCO");
+        Debug.Log("Estoy dentro del cambio a blanco");
         
         PhotonView pv = gameObject.GetComponent<PhotonView>();
         pv.RPC("iniciarcorrutina", RpcTarget.All);
@@ -145,6 +226,7 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
     [PunRPC]
     void iniciarcorrutina()
     {
+        Debug.Log("Estoy dentro de llamar corrutina");
         StartCoroutine("Mantener");
     }
 
@@ -154,6 +236,7 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
     {
         if (mantener)
         {
+            Debug.Log("Estoy dentro de Mantener corrutina");
             float timer = 0;
             timer += Time.deltaTime;
             float waitTime = 5.0f;
@@ -162,13 +245,14 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
             Material2.color = cambiar.color;
             Debug.Log("He entrado en la FUNCION DE MANTENER");
             float startTime = Time.time;
-            while ((Time.time < startTime + 5.0f) && mantener==true)
-           //while ((timer> waitTime) && mantener==true)
+            while ((Time.time < startTime + 5.0f) && mantener == true)
+            //while ((timer> waitTime) && mantener==true)
             {
                 Debug.Log("Time.time" + mantener);
                 Debug.Log(Time.time);
                 yield return null;
             }
+            //yield return new WaitForSeconds(5); NO VA
             Debug.Log("YA HAAN PASADO LOS 10 SEGUNDOS WACHOOOO");
             mantener = false;
         }

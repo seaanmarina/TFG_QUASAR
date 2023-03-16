@@ -23,6 +23,9 @@ public class InputHandler : MonoBehaviour
     Input_player input_player;
     public GameObject input;
 
+    CambioDimension cambio_Dimension;
+    public GameObject change;
+
 
     InputAltar input_Altar;
     public GameObject inputaltar;
@@ -31,6 +34,14 @@ public class InputHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
+
+        change = GameObject.FindGameObjectWithTag("CambioDimension");
+        cambio_Dimension = change.GetComponent<CambioDimension>();
+
+
+
 
         input = GameObject.FindGameObjectWithTag("Input");
         input_player = input.GetComponent<Input_player>();
@@ -78,6 +89,7 @@ public class InputHandler : MonoBehaviour
         {
             input_player._input = !input_player._input;
             input_Altar._input = !input_Altar._input;
+         //   cambio_Dimension.permitidoCambiar = !cambio_Dimension.permitidoCambiar;
         }
 
 
@@ -96,6 +108,18 @@ public class InputHandler : MonoBehaviour
 
 
 
+    }
+
+    void OnInteraccionarCambio()
+    {
+        if (view.IsMine)
+        {
+            if (cambio_Dimension.puedeintCambiar)
+            {
+                cambio_Dimension.permitidoCambiar = true;
+            }
+           
+        }
     }
 
 

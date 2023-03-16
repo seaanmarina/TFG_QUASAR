@@ -1426,6 +1426,51 @@ MonoBehaviour:
   sceneViewId: 6
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!1 &612379472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 612379474}
+  - component: {fileID: 612379473}
+  m_Layer: 0
+  m_Name: CambioDimension
+  m_TagString: CambioDimension
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &612379473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612379472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b6227459d7ae34ebd973ba33aeb224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  permitidoCambiar: 0
+--- !u!4 &612379474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612379472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -67.770004, y: 0.42609632, z: 8.48934}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &633987594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,6 +1622,8 @@ MonoBehaviour:
   ObjetoACambiar2: {fileID: 119780223}
   original: {fileID: 2100000, guid: 55a0c358a91e4c547a17140d47be75f3, type: 2}
   cambiar: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  mantener: 0
+  change: {fileID: 0}
   controlador_blanca: {fileID: 537349078}
 --- !u!114 &660173246
 MonoBehaviour:
@@ -3540,6 +3587,8 @@ MonoBehaviour:
   ObjetoACambiar2: {fileID: 775704004}
   original: {fileID: 2100000, guid: 55a0c358a91e4c547a17140d47be75f3, type: 2}
   cambiar: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  mantener: 0
+  change: {fileID: 0}
   controlador_blanca: {fileID: 537349078}
 --- !u!114 &1982616901
 MonoBehaviour:

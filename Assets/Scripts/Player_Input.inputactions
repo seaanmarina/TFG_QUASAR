@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "InteraccionarCambio",
+                    "type": "Button",
+                    "id": "b35082af-e8cb-4a0b-bf09-edc0bb659be8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -148,6 +157,17 @@
                     "processors": "",
                     "groups": "Teclado",
                     "action": "Prueba",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "91a28b51-b59b-411f-93cd-6d97801b5b1d",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Teclado",
+                    "action": "InteraccionarCambio",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

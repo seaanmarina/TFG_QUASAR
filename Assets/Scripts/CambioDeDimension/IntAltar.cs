@@ -143,7 +143,11 @@ public class IntAltar : MonoBehaviourPunCallbacks
     [PunRPC]
     private void OnTriggerExit(Collider other)
     {
-        input_player._puedeInteraccionar = false;
+        if (PhotonNetwork.LocalPlayer.ActorNumber == other.GetComponent<PhotonView>().Owner.ActorNumber)
+        {
+            input_player._puedeInteraccionar = false;
+            controladordelcambio.cambio = false;
+        }
     }
 
     [PunRPC]
