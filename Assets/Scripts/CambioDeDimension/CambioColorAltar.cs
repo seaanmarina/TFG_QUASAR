@@ -13,6 +13,7 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
     Material Material2;
     public Material original;
     public Material cambiar;
+    public bool mantener;
 
     private int puederestar;
     private int puedesumar;
@@ -32,7 +33,7 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
     {
 
         controlblanca = controlador_blanca.GetComponent<Control_Blanca>();
-
+        mantener = false;
 
         Material1 = ObjetoACambiar1.GetComponent<Renderer>().material;
         Material2 = ObjetoACambiar2.GetComponent<Renderer>().material;
@@ -60,13 +61,15 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
     [PunRPC]
     void cambiocontrolador()
     {
-        if (controlblanca.mantenerAltar >= 2)
+        if (controlblanca.mantenerAltar >= 2 || mantener==true)
         {
-            Debug.Log("HA ENRTADO EN EL COLOR BLANCO");
+            mantener = true;
+            Debug.Log(mantener + "HA ENRTADO EN EL COLOR BLANCO");
 
             PhotonView pv = gameObject.GetComponent<PhotonView>();
    
             pv.RPC("cambiocontroladorblanco", RpcTarget.All);
+
 
         }
         else
@@ -94,6 +97,8 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
         }
         else
         {
+
+                Debug.Log("Cambio else");
             Material1.color = original.color;
             Material2.color = original.color;
 
@@ -116,7 +121,7 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
     {
         Material1.color = cambiar.color;
         Material2.color = cambiar.color;
-
+        Debug.Log("Cambio colorrr");
 
     }
 
@@ -126,25 +131,49 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
     [PunRPC]
     void cambiocontroladorblanco()
     {
-        Material1.color = cambiar.color;
-        Material2.color = cambiar.color;
+        
+        //Material1.color = cambiar.color;
+        //Material2.color = cambiar.color;
         Debug.Log("He entrado en el cambiocontrolador  BLANCO");
+        
         PhotonView pv = gameObject.GetComponent<PhotonView>();
-        pv.RPC("Mantener", RpcTarget.All);
+        pv.RPC("iniciarcorrutina", RpcTarget.All);
+        
 
+    }
+
+    [PunRPC]
+    void iniciarcorrutina()
+    {
+        StartCoroutine("Mantener");
     }
 
 
     [PunRPC]
     IEnumerator Mantener()
     {
-        Material1.color = cambiar.color;
-        Material2.color = cambiar.color;
-        Debug.Log("He entrado en la FUNCION DE MANTENER");
-        yield return new WaitForSeconds(10f);
-        Debug.Log("YA HAAN PASADO LOS 10 SEGUNDOS WACHOOOO");
-        Material1.color = original.color;
-        Material2.color = original.color;
+        if (mantener)
+        {
+            float timer = 0;
+            timer += Time.deltaTime;
+            float waitTime = 5.0f;
+            Debug.Log(mantener + "HA ENRTADO EN EL COLOR BLANCO MANTENER");
+            Material1.color = cambiar.color;
+            Material2.color = cambiar.color;
+            Debug.Log("He entrado en la FUNCION DE MANTENER");
+            float startTime = Time.time;
+            while ((Time.time < startTime + 5.0f) && mantener==true)
+           //while ((timer> waitTime) && mantener==true)
+            {
+                Debug.Log("Time.time" + mantener);
+                Debug.Log(Time.time);
+                yield return null;
+            }
+            Debug.Log("YA HAAN PASADO LOS 10 SEGUNDOS WACHOOOO");
+            mantener = false;
+        }
+
+
     }
 
 
