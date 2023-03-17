@@ -114,24 +114,30 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
         
         if (PhotonNetwork.LocalPlayer.ActorNumber == other.GetComponent<PhotonView>().Owner.ActorNumber)
         {
-            mantener = false;
-            cambio = false;
-            Debug.Log("Estoy fuera de trigger de mantener");
+            //mantener = false;
+            //cambio = false;
+            Debug.Log("Estoy fuera de trigger de mantener" + gameObject);
 
-            if (alreadyExited)
-                return;
+            //if (!alreadyExited)
+            //{
+            PhotonView pv = gameObject.GetComponent<PhotonView>();
+            pv.RPC("EjecutarTriggerExitRPC", RpcTarget.All);
+    
 
-            EjecutarTriggerExitRPC();
-
-            alreadyExited = true;
+            //    alreadyExited = true;
+            //}
         }
-        }
+    }
 
-
+    [PunRPC]
     void EjecutarTriggerExitRPC()
     {
+        //mantener = false;
+        //cambio = false;
         // Llama a la función OnTriggerExit en todos los clientes
-        photonView.RPC("OnTriggerExit", RpcTarget.All);
+        PhotonView pv = gameObject.GetComponent<PhotonView>();
+        pv.RPC("cambiocontrolador", RpcTarget.All);
+
     }
 
 
@@ -179,7 +185,7 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
         else
         {
 
-                Debug.Log("Estoy dentro de else normal mantener");
+                Debug.Log("Estoy dentro de else normal mantener" + gameObject.name);
             Material1.color = original.color;
             Material2.color = original.color;
 
