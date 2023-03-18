@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8458346539487286309}
   - component: {fileID: 5057804474339393627}
   - component: {fileID: 5057804474339393620}
-  - component: {fileID: 3861683713910437428}
   - component: {fileID: 5057804474339393621}
   - component: {fileID: 5057804474339393623}
   - component: {fileID: 5057804474339393616}
@@ -86,25 +85,6 @@ MonoBehaviour:
   gravity: 25
   jumpforce: 8
   speed: 7
---- !u!114 &3861683713910437428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5057804474339393617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19562a9e71e3d4e479b9ba46e149e63e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dash: 0
-  jugadorinteraccion: 0
-  _salto: 0
-  _puedeInteraccionar: 0
-  input: {fileID: 0}
-  change: {fileID: 0}
-  inputaltar: {fileID: 0}
 --- !u!114 &5057804474339393621
 MonoBehaviour:
   m_ObjectHideFlags: 0
