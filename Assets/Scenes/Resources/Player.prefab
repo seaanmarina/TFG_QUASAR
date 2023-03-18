@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 3490802898333912566}
   - component: {fileID: 2926748353725331608}
   - component: {fileID: 9093686648717959697}
+  - component: {fileID: 655101473753669078}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -156,7 +157,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -192,6 +193,22 @@ MonoBehaviour:
   z: -4
   smoothSpeed: 6.79
   offset: {x: 0, y: 0.98, z: 0}
+--- !u!114 &655101473753669078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630482555709704229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1001 &6272984439478690066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -214,6 +231,10 @@ PrefabInstance:
     - target: {fileID: 5057804474339393617, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
       propertyPath: m_Name
       value: Player_alone
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393617, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5057804474339393617, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
       propertyPath: m_TagString
@@ -273,6 +294,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5057804474339393626, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474883593654, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474900903312, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
