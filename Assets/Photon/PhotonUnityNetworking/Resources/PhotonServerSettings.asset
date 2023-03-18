@@ -58,6 +58,8 @@ MonoBehaviour:
   - Mantener
   - iniciarcorrutina
   - EjecutarTriggerExitRPC
+  - Espera
+  - llamarcorutina
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

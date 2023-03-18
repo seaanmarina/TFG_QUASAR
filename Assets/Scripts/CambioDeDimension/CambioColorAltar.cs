@@ -9,6 +9,10 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
     public bool cambio;
     public GameObject ObjetoACambiar1;
     public GameObject ObjetoACambiar2;
+
+
+    public GameObject cambiodeposicion;
+
     Material Material1;
     Material Material2;
     public Material original;
@@ -87,11 +91,14 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
                 cambio_Dimension.puedeintCambiar = true;
                 if (cambio_Dimension.permitidoCambiar)
                 {
-                    other.transform.position = new Vector3(0, 0, 0);
+                    //other.transform.position = new Vector3(0, 0, 0);
+                    other.transform.position = cambiodeposicion.transform.position;
                     cambio_Dimension.permitidoCambiar = false;
-                    cambio = false;
-                    mantener = false;
+                    //cambio = false;
+                    //mantener = false;
                     Debug.Log("Estoy dentro de if de mantener");
+                    PhotonView pv = gameObject.GetComponent<PhotonView>();
+                    pv.RPC("llamarcorutina", RpcTarget.All);
                 }
             }
             else
@@ -106,39 +113,66 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
         }
 
         }
-
     [PunRPC]
-     void OnTriggerExit(Collider other)
+    void llamarcorutina()
     {
-
-        
-        if (PhotonNetwork.LocalPlayer.ActorNumber == other.GetComponent<PhotonView>().Owner.ActorNumber)
-        {
-            //mantener = false;
-            //cambio = false;
-            Debug.Log("Estoy fuera de trigger de mantener" + gameObject);
-
-            //if (!alreadyExited)
-            //{
-            PhotonView pv = gameObject.GetComponent<PhotonView>();
-            pv.RPC("EjecutarTriggerExitRPC", RpcTarget.All);
-    
-
-            //    alreadyExited = true;
-            //}
-        }
+        PhotonView pv = gameObject.GetComponent<PhotonView>();
+        StartCoroutine("Espera");
     }
 
+
+
     [PunRPC]
-    void EjecutarTriggerExitRPC()
+    IEnumerator Espera()
     {
-        //mantener = false;
-        //cambio = false;
-        // Llama a la función OnTriggerExit en todos los clientes
+        while (mantener == true)
+        {
+            yield return null;
+        }
+
+        cambio = false;
+        mantener = false;
         PhotonView pv = gameObject.GetComponent<PhotonView>();
         pv.RPC("cambiocontrolador", RpcTarget.All);
 
+
     }
+
+
+
+
+    //[PunRPC]
+    // void OnTriggerExit(Collider other)
+    //{
+    //    cambio_Dimension.puedeintCambiar = false;
+
+    //    if (PhotonNetwork.LocalPlayer.ActorNumber == other.GetComponent<PhotonView>().Owner.ActorNumber)
+    //    {
+    //        //mantener = false;
+    //        //cambio = false;
+    //        Debug.Log("Estoy fuera de trigger de mantener" + gameObject);
+
+    //        //if (!alreadyExited)
+    //        //{
+    //        PhotonView pv = gameObject.GetComponent<PhotonView>();
+    //        pv.RPC("EjecutarTriggerExitRPC", RpcTarget.All);
+    
+
+    //        //    alreadyExited = true;
+    //        //}
+    //    }
+    //}
+
+    //[PunRPC]
+    //void EjecutarTriggerExitRPC()
+    //{
+    //    //mantener = false;
+    //    //cambio = false;
+    //    // Llama a la función OnTriggerExit en todos los clientes
+    //    PhotonView pv = gameObject.GetComponent<PhotonView>();
+    //    pv.RPC("cambiocontrolador", RpcTarget.All);
+
+    //}
 
 
 
