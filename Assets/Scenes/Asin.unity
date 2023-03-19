@@ -1568,7 +1568,7 @@ GameObject:
   - component: {fileID: 633987598}
   m_Layer: 0
   m_Name: Contr_Puede_int
-  m_TagString: Untagged
+  m_TagString: Interaccion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1623,6 +1623,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _puede: 0
+  timer: 0
+  timer2: 0
+  tiempototal: 0
 --- !u!1 &660173241
 GameObject:
   m_ObjectHideFlags: 0
@@ -3540,6 +3543,8 @@ MonoBehaviour:
   original: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
   cambiar: {fileID: 2100000, guid: 1b209e0737e1db1449eec575f29f5097, type: 2}
   blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  StartColor: {r: 1, g: 0.79607844, b: 0.46666667, a: 0}
+  EndColor: {r: 0.63529414, g: 0.9098039, b: 1, a: 0}
   controlador_blanca: {fileID: 537349078}
   ObjetoContadorBlanca: {fileID: 537349078}
 --- !u!114 &1509881926
@@ -3647,6 +3652,8 @@ MonoBehaviour:
   original: {fileID: 2100000, guid: 1b209e0737e1db1449eec575f29f5097, type: 2}
   cambiar: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
   blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  StartColor: {r: 0.63529414, g: 0.9098039, b: 1, a: 0}
+  EndColor: {r: 1, g: 0.79607844, b: 0.46666667, a: 0}
   controlador_blanca: {fileID: 537349078}
   ObjetoContadorBlanca: {fileID: 537349078}
 --- !u!114 &1532392535

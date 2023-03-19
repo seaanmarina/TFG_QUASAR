@@ -6,6 +6,11 @@ using Photon.Realtime;
 
 public class Input_playerA : MonoBehaviourPunCallbacks
 {
+    Puede_InteraccionarA permitido;
+    GameObject interaccion;
+
+  
+
 
     public GameObject controlador_blanca;
     Control_BlancaA controlblanca;
@@ -18,6 +23,12 @@ public class Input_playerA : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+
+        
+
+        interaccion = GameObject.FindGameObjectWithTag("Interaccion");
+        permitido = interaccion.GetComponent<Puede_InteraccionarA>();
+
         contador = 1;
         controlador = true;
         controlblanca = controlador_blanca.GetComponent<Control_BlancaA>();
@@ -27,23 +38,41 @@ public class Input_playerA : MonoBehaviourPunCallbacks
     }
 
 
+
+
+
+   
+
+
+
     // Update is called once per frame
     [PunRPC]
     void Update()
     {
+
         
+
+
         if (_puedeInteraccionar)
         {
+           // while (_input == true)
+            //{
+
+             //   permitido.timer += Time.deltaTime;
+           // }
+            
 
             _jugadorinteraccion = _input;
             if (_jugadorinteraccion && controlador)
             {
+                
                 PhotonView pv = gameObject.GetComponent<PhotonView>();
                 pv.RPC("sumarcontador", RpcTarget.All);
                 controlador = false;
             }
             else if(!_jugadorinteraccion && controlblanca.contadorBlanca > 0 && !controlador)
             {
+               
                 PhotonView pv = gameObject.GetComponent<PhotonView>();
                 pv.RPC("restarcontador", RpcTarget.All);
                 controlador = true;

@@ -288,8 +288,8 @@ public class CambioColorAltar : MonoBehaviourPunCallbacks
             while ((Time.time < startTime + 5.0f) && mantener == true)
             //while ((timer> waitTime) && mantener==true)
             {
-                Debug.Log("Time.time" + mantener);
-                Debug.Log(Time.time);
+              //  Debug.Log("Time.time" + mantener);
+                //Debug.Log(Time.time);
                 yield return null;
             }
             //yield return new WaitForSeconds(5); NO VA

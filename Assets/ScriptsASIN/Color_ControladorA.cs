@@ -17,6 +17,16 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
     private int puedesumar;
 
 
+    Puede_InteraccionarA permitido;
+    GameObject interaccion;
+
+    public Color StartColor;
+    public Color EndColor;
+
+
+    Input_playerA input_player;
+    public GameObject input;
+
 
     public GameObject controlador_blanca;
     Control_BlancaA controlblanca;
@@ -24,12 +34,27 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
     public GameObject ObjetoContadorBlanca;
     Control_BlancaA control_blanca;
 
+    int valor;
 
     PhotonView pv;
+
+    bool nocambio;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        nocambio = false;
+
+
+        interaccion = GameObject.FindGameObjectWithTag("Interaccion");
+        permitido = interaccion.GetComponent<Puede_InteraccionarA>();
+
+        valor = 0;
+
+        input = GameObject.FindGameObjectWithTag("Input");
+        input_player = input.GetComponent<Input_playerA>();
+
 
         controlblanca = controlador_blanca.GetComponent<Control_BlancaA>();
 
@@ -39,6 +64,8 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
         control_blanca = ObjetoContadorBlanca.GetComponent<Control_BlancaA>();
         puedesumar = 1;
         puederestar = 0;
+
+
        
     }
 
@@ -73,11 +100,11 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
 
 
 
-            if (cambio)
+            if (cambio && !nocambio)
             {
                 PhotonView pv = gameObject.GetComponent<PhotonView>();
                 //  Debug.Log("dentro del if");
-                Material1.color = cambiar.color;
+               // Material1.color = cambiar.color;
                 pv.RPC("cambiocontroladorotro", RpcTarget.All);
 
                 /* for (int i = 0; i < puedesumar; i++)
@@ -90,9 +117,18 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
                      Debug.Log(control_blanca.contadorBlanca + "controlador");
                  }*/
             }
-            else
+            else if(!nocambio)
             {
+                Debug.Log("vuelvo al original");
                 Material1.color = original.color;
+                if ( valor == 1)
+                {
+                    nocambio = true;
+                    PhotonView pv = gameObject.GetComponent<PhotonView>();
+                    pv.RPC("llamarcorutinacolor", RpcTarget.All);
+                    
+                    valor = 0;
+                }
 
                 /* for (int i = 0; i < puederestar; i++)
                  {
@@ -111,7 +147,8 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
     void cambiocontroladorotro()
     {
         Material1.color = cambiar.color;
-
+        StopAllCoroutines();
+        valor = 1;
 
     }
 
@@ -123,5 +160,69 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
 
 
     }
+
+    [PunRPC]
+    void llamarcorutinacolor()
+    {
+        Debug.Log("DENTRO DE CORUTINA");
+        
+        PhotonView pv = gameObject.GetComponent<PhotonView>();
+        StartCoroutine(conjuntodeCorutinas(StartColor, EndColor, permitido.tiempototal));
+        
+    }
+
+    [PunRPC]
+    IEnumerator conjuntodeCorutinas(Color startColor, Color endColor, float t)
+    {
+        
+        StartCoroutine(cambiodecolor(endColor, startColor, t));
+        yield return new WaitForSeconds(5);
+        StartCoroutine(cambiodecolor(startColor, endColor, t));
+        
+        StartCoroutine(cambiodecolor(endColor, startColor, t));
+        yield return new WaitForSeconds(5);
+        StartCoroutine(cambiodecolor(startColor, endColor, t));
+        StartCoroutine(cambiodecolor(endColor, startColor, t));
+
+        PhotonView pv = gameObject.GetComponent<PhotonView>();
+        
+        pv.RPC("cambiocontrolador", RpcTarget.All);
+
+        nocambio = false;
+    }
+
+
+
+
+
+
+    [PunRPC]
+    IEnumerator cambiodecolor(Color startColor, Color endColor, float t)
+    {
+        float currentTime = 0;
+        //while (currentTime < t)
+        //{
+        float time = t;
+
+        while(currentTime <= time) {
+            ////https://answers.unity.com/questions/1038571/colorlerp-for-spriterender-is-not-smooth.html
+            currentTime += Time.deltaTime;
+            float lerp_Percentage = currentTime / time;
+        
+            
+            Debug.Log("COOORRRUUUTIIINA");
+            // input_player
+            Color currentColor = Color.Lerp(startColor, endColor, lerp_Percentage);
+            Material1.color = currentColor;
+            yield return null;
+        }
+
+
+    }
+
+
+
+
+
 
 }

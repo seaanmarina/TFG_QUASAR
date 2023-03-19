@@ -9,6 +9,7 @@ TagManager:
   - Input
   - inputAltar
   - CambioDimension
+  - Interaccion
   layers:
   - Default
   - TransparentFX
