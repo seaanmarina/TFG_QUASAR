@@ -15,6 +15,6 @@ public class Contr_PlayerA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("");
+        //Debug.Log("");
     }
 }

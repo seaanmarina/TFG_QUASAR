@@ -10,6 +10,7 @@ public class Puede_InteraccionarA : MonoBehaviourPunCallbacks
     public float timer;
     public float timer2;
     public float tiempototal;
+    public bool interacciona;
     [PunRPC]
     // Start is called before the first frame update
     void Start()
@@ -21,9 +22,9 @@ public class Puede_InteraccionarA : MonoBehaviourPunCallbacks
     [PunRPC]
     void Update()
     {
-        Debug.Log(timer + "El timer esta en ese numero");
-        Debug.Log(timer2 + "El timer esta en ese numero2");
-        Debug.Log(tiempototal + "El timer esta en ese numero TOTAL");
+        //Debug.Log(timer + "El timer esta en ese numero");
+        //Debug.Log(timer2 + "El timer esta en ese numero2");
+        //Debug.Log(tiempototal + "El timer esta en ese numero TOTAL");
         
     }
 }

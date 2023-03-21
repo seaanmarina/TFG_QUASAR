@@ -109,6 +109,7 @@ public class InteraccionObjetoA : MonoBehaviourPunCallbacks
             //Debug.Log("estoy interaccoinando a tope de power");
 
             controladordelcambio.cambio = input_player._jugadorinteraccion;
+            Debug.Log("Llamada a cambio controlador desde la iteraccion:D");
             pv.RPC("cambiocontrolador", RpcTarget.All);
             //this.photonView.RPC("CambioColor", RpcTarget.All);
             //}
@@ -144,8 +145,8 @@ public class InteraccionObjetoA : MonoBehaviourPunCallbacks
     void CambioColor()
     {
 
-        Debug.Log(input_player._puedeInteraccionar + "Puede Interaccionar" + PhotonNetwork.LocalPlayer.ActorNumber);
-        Debug.Log(input_player._input + "Input" + PhotonNetwork.LocalPlayer.ActorNumber);
+        //Debug.Log(input_player._puedeInteraccionar + "Puede Interaccionar" + PhotonNetwork.LocalPlayer.ActorNumber);
+        //Debug.Log(input_player._input + "Input" + PhotonNetwork.LocalPlayer.ActorNumber);
         //if (valor)
         //{
         

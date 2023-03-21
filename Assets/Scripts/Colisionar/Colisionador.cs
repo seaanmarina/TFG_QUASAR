@@ -19,10 +19,10 @@ public class Colisionador : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Que me chocoAAAAAAAAAAAAAAAAAAAAA");
+      //  Debug.Log("Que me chocoAAAAAAAAAAAAAAAAAAAAA");
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Que me chocoAAAAAAAAAAAAAAAAAAAAA");
+            //Debug.Log("Que me chocoAAAAAAAAAAAAAAAAAAAAA");
             Physics.IgnoreCollision(other.GetComponent<Collider>(), GetComponent<Collider>(), true);
         }
 

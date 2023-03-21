@@ -40,12 +40,18 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
 
     bool nocambio;
 
+   public bool yaheentrado;
+
+    bool EntrarEnCorutinaBlanca;
+
     // Start is called before the first frame update
     void Start()
     {
 
-        nocambio = false;
+        yaheentrado = false;
 
+        nocambio = false;
+        EntrarEnCorutinaBlanca = true;
 
         interaccion = GameObject.FindGameObjectWithTag("Interaccion");
         permitido = interaccion.GetComponent<Puede_InteraccionarA>();
@@ -56,7 +62,7 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
         input_player = input.GetComponent<Input_playerA>();
 
 
-        controlblanca = controlador_blanca.GetComponent<Control_BlancaA>();
+       
 
 
         Material1 = ObjetoACambiar.GetComponent<Renderer>().material;
@@ -66,6 +72,8 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
         puederestar = 0;
 
 
+
+
        
     }
 
@@ -73,27 +81,43 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
     [PunRPC]
     void Update()
     {
-       // Debug.Log(cambio + "estado del cambio del color, si es true es cambio");
 
-        //base.photonView.RPC("cambiocontrolador", RpcTarget.All);
-       // Debug.Log(cambio);
+        //if (control_blanca.contadorAsin >= 2)
+        //{
+        //    //input_player.sigueblanca = true;
+        //    PhotonView pv = gameObject.GetComponent<PhotonView>();
+        //    pv.RPC("cambiocontrolador", RpcTarget.All);
 
-       // Debug.Log(control_blanca.contadorBlanca);
-      
+        //}
+        // else
+        // {
+        //     input_player.sigueblanca = false;
+        // }
+        //// Debug.Log(cambio + "estado del cambio del color, si es true es cambio");
+
+        // //base.photonView.RPC("cambiocontrolador", RpcTarget.All);
+        //// Debug.Log(cambio);
+
+        //// Debug.Log(control_blanca.contadorBlanca);
+
     }
 
     [PunRPC]
     void cambiocontrolador()
     {
-        if (controlblanca.contadorBlanca >= 2)
+        if (control_blanca.contadorAsin >= 2)
+        //if (control_blanca.contadorAsin >= 2 && !yaheentrado)
         {
-            Debug.Log("HA ENRTADO EN EL COLOR BLANCO");
 
+            //StopAllCoroutines();
+            //Debug.Log("HA ENRTADO EN EL COLOR BLANCO");
+            //EntrarEnCorutinaBlanca = false; //CREO QUE ENTONCES SOLO SIRVE PARA DOS PERSONAS PORQUE EN CUANTO LO DETECTE, SE CAMBIARÁ, AUNQUE CREO QUE SIRVE
             PhotonView pv = gameObject.GetComponent<PhotonView>();
-            //  Debug.Log("dentro del if");
+              Debug.Log("dentro del if" + gameObject.name);
             Material1.color = blanco.color;
             pv.RPC("cambiocontroladorblanco", RpcTarget.All);
 
+            Debug.Log("Estoy en cambiocontrolador");
         }
         else
         {
@@ -102,10 +126,19 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
 
             if (cambio && !nocambio)
             {
+                
                 PhotonView pv = gameObject.GetComponent<PhotonView>();
                 //  Debug.Log("dentro del if");
-               // Material1.color = cambiar.color;
-                pv.RPC("cambiocontroladorotro", RpcTarget.All);
+                // Material1.color = cambiar.color;
+                if (control_blanca.contadorAsin >= 1)
+                {
+                    
+                    pv.RPC("cambiocontrolador", RpcTarget.All);
+                }
+                else
+                {
+                    pv.RPC("cambiocontroladorotro", RpcTarget.All);
+                }
 
                 /* for (int i = 0; i < puedesumar; i++)
                  {
@@ -116,18 +149,24 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
                     // Debug.Log(puedesumar + "puede sumar");
                      Debug.Log(control_blanca.contadorBlanca + "controlador");
                  }*/
+
+                Debug.Log("Estoy en cambio");
             }
             else if(!nocambio)
             {
-                Debug.Log("vuelvo al original");
+                //Debug.Log("vuelvo al original");
+              //  Debug.Log("aqui estoy");
                 Material1.color = original.color;
+
                 if ( valor == 1)
                 {
+                    valor = 0;
                     nocambio = true;
                     PhotonView pv = gameObject.GetComponent<PhotonView>();
                     pv.RPC("llamarcorutinacolor", RpcTarget.All);
+                    //Debug.Log("Debug log ASDF");
                     
-                    valor = 0;
+                    //pv.RPC("contadorrestar", RpcTarget.All);
                 }
 
                 /* for (int i = 0; i < puederestar; i++)
@@ -138,6 +177,8 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
                      puedesumar++;
                      Debug.Log(control_blanca.contadorBlanca + " controlador al salir");
                  }*/
+
+                Debug.Log("Estoy en !nocambio");
             }
         }
         
@@ -147,8 +188,19 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
     void cambiocontroladorotro()
     {
         Material1.color = cambiar.color;
-        StopAllCoroutines();
+        
         valor = 1;
+
+        Debug.Log("Estoy en cambiocontroladorotro");
+
+    }
+
+    [PunRPC]
+    void contadorrestar()
+    {
+
+        //control_blanca.contadorAsin = control_blanca.contadorAsin - 1;
+
 
     }
 
@@ -156,42 +208,139 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
     [PunRPC]
     void cambiocontroladorblanco()
     {
-        Material1.color = blanco.color;
+        StopAllCoroutines();
+        
+        nocambio = true;
 
+            StartCoroutine(ponerablanco());
+            EntrarEnCorutinaBlanca = false;
+        // Debug.Log("A por el cambio a blanco" + gameObject.name);
+        //if (control_blanca.contadorPararBlanco == control_blanca.contadorAsin)
+        //{
+        //    Debug.Log("Cambio de tiempo dentro del if");
+        //    input_player.cambiodetiempo = true;
+        //    control_blanca.contadorPararBlanco = 0;
+
+        //}
+        //Material1.color = blanco.color;
+        Debug.Log("Estoy en cambiocontroladorblanco");
 
     }
 
     [PunRPC]
+    IEnumerator ponerablanco()
+    {
+        
+        if (control_blanca.contadorPararBlanco < control_blanca.contadorAsin)
+        {
+            control_blanca.contadorPararBlanco++;
+            ///  Debug.Log("Cambio de tiempo dentro del if");
+            //yield return new WaitForSeconds(0.5f);
+            //input_player.cambiodetiempo = true;
+            //control_blanca.contadorPararBlanco = 0;
+            //Debug.Log("Estoy en ifpoerblanco");
+        }
+
+        if (control_blanca.contadorPararBlanco == control_blanca.contadorAsin)
+        {
+            input_player.cambiodetiempo = true;
+            control_blanca.contadorPararBlanco = 0;
+            Debug.Log("Estoy en ifpoerblanco");
+        }
+      //  Debug.Log("BLANCO QUE TE QUERO BLANCO INICIO");
+        Material1.color = blanco.color;
+        yield return new WaitForSeconds(5f);
+        //Debug.Log("BLANCO QUE TE QUERO BLANCO");
+        Material1.color = original.color;
+        yaheentrado = false;
+       // input_player.controlador = true;
+        //input_player.controlador = true;
+        nocambio = false;
+        Material1.color = original.color;
+
+        input_player.controlador = true;
+        // Debug.Log("BLANCO QUE TE QUERO BLANCO");
+        yield return null;
+        // input_player.cambiodetiempo = false;
+        //PhotonView pv = gameObject.GetComponent<PhotonView>();
+        //pv.RPC("cambiocontrolador", RpcTarget.All);
+        Debug.Log("Estoy en ponerblanco");
+    }
+
+
+
+    [PunRPC]
     void llamarcorutinacolor()
     {
-        Debug.Log("DENTRO DE CORUTINA");
+       // Debug.Log("DENTRO DE CORUTINA");
         
         PhotonView pv = gameObject.GetComponent<PhotonView>();
+       // control_blanca.contadorAsin = control_blanca.contadorAsin + 1;
+        //Debug.Log("sumo" + gameObject.name);
         StartCoroutine(conjuntodeCorutinas(StartColor, EndColor, permitido.tiempototal));
-        
+        Debug.Log("Estoy en llamarcorrutinacolor");
+
     }
 
     [PunRPC]
     IEnumerator conjuntodeCorutinas(Color startColor, Color endColor, float t)
     {
-        
-        StartCoroutine(cambiodecolor(endColor, startColor, t));
-        yield return new WaitForSeconds(5);
-        StartCoroutine(cambiodecolor(startColor, endColor, t));
-        
-        StartCoroutine(cambiodecolor(endColor, startColor, t));
-        yield return new WaitForSeconds(5);
-        StartCoroutine(cambiodecolor(startColor, endColor, t));
-        StartCoroutine(cambiodecolor(endColor, startColor, t));
 
-        PhotonView pv = gameObject.GetComponent<PhotonView>();
-        
-        pv.RPC("cambiocontrolador", RpcTarget.All);
+        if (nocambio)
+        {
+            PhotonView pv = gameObject.GetComponent<PhotonView>();
+            //pv.RPC("end_start", RpcTarget.All);
 
-        nocambio = false;
+            //yield return new WaitForSeconds(3.5f);
+            //pv.RPC("start_end", RpcTarget.All);
+            //pv.RPC("end_start", RpcTarget.All);
+
+            //yield return new WaitForSeconds(3.5f);
+
+            //pv.RPC("start_end", RpcTarget.All);
+            //pv.RPC("end_start", RpcTarget.All);
+            //StartCoroutine(cambiodecolor(startColor, endColor, t));
+
+
+            //Debug.Log("Empieza corrutina general" + nocambio);
+
+
+
+            yield return StartCoroutine(cambiodecolor(endColor, startColor, t));
+
+            yield return new WaitForSeconds(3.5f);
+
+            yield return StartCoroutine(cambiodecolor(startColor, endColor, t));
+            yield return StartCoroutine(cambiodecolor(endColor, startColor, t));
+
+            yield return new WaitForSeconds(3.5f);
+
+            //StartCoroutine(cambiodecolor(startColor, endColor, t));
+            yield return StartCoroutine(cambiodecolor(startColor, endColor, t));
+            yield return StartCoroutine(cambiodecolor(endColor, startColor, t));
+
+            //control_blanca.contadorAsin = control_blanca.contadorAsin - 1;
+            //input_player.controlador = true; 
+           // Debug.Log("Empieza corrutina general caca");
+            nocambio = false;
+            Debug.Log("Estoy en corrutina conjuntocorrutinas");
+            //Debug.Log("Llamada al inicial");
+            //pv.RPC("cambiocontrolador", RpcTarget.All);
+        }
+        Debug.Log("Estoy en conjuntocorrutinas");
+
     }
+    [PunRPC]
+    void start_end(Color startColor, Color endColor, float t)
+    {
+        StartCoroutine(cambiodecolor(startColor, endColor, t));
 
-
+    }
+    [PunRPC]
+    void end_start(Color startColor, Color endColor, float t)
+    {
+        StartCoroutine(cambiodecolor(endColor, startColor, t));
+    }
 
 
 
@@ -199,6 +348,17 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
     [PunRPC]
     IEnumerator cambiodecolor(Color startColor, Color endColor, float t)
     {
+        if (control_blanca.contadorAsin >= 2)
+        {
+            
+            //PhotonView pv = gameObject.GetComponent<PhotonView>();
+            //Debug.Log("Llamada al inicial");
+            //pv.RPC("cambiocontrolador", RpcTarget.All);
+            //StopAllCoroutines();
+            Debug.Log("Estoy en cambiodecolor if");
+
+        }
+
         float currentTime = 0;
         //while (currentTime < t)
         //{
@@ -210,13 +370,15 @@ public class Color_ControladorA : MonoBehaviourPunCallbacks
             float lerp_Percentage = currentTime / time;
         
             
-            Debug.Log("COOORRRUUUTIIINA");
+          //  Debug.Log("COOORRRUUUTIIINA");
             // input_player
             Color currentColor = Color.Lerp(startColor, endColor, lerp_Percentage);
             Material1.color = currentColor;
+            Debug.Log("Estoy en whilecambiocolor");
             yield return null;
         }
 
+        Debug.Log("Estoy en cmabiodecolor");
 
     }
 

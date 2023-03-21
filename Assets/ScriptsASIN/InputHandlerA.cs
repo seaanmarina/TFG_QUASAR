@@ -103,21 +103,23 @@ public class InputHandlerA : MonoBehaviour
 
             input_player._input = !input_player._input;
             input_Altar._input = !input_Altar._input;
-            if (input_player._puedeInteraccionar)
-            {
-                if (input_player._input && !contador)
-                {
-                    permitido.timer = Time.time;
-                    contador = true;
 
-                }
-                if (contador && !input_player._input)
-                {
-                    permitido.timer2 = Time.time;
-                    contador = false;
-                    permitido.tiempototal = permitido.timer2 - permitido.timer;
-                }
-            }
+            contador = !contador;
+            //if (input_player._puedeInteraccionar)
+            //{
+            //    if (input_player._input && !contador)
+            //    {
+            //        permitido.timer = Time.time;
+            //        contador = true;
+
+            //    }
+            //    if (contador && !input_player._input)
+            //    {
+            //        permitido.timer2 = Time.time;
+            //        contador = false;
+            //        permitido.tiempototal = permitido.timer2 - permitido.timer;
+            //    }
+            //}
          //   cambio_Dimension.permitidoCambiar = !cambio_Dimension.permitidoCambiar;
         }
 
