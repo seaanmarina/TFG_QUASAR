@@ -68,6 +68,10 @@ MonoBehaviour:
   - sumarcontadorasin
   - ponerablanco
   - Controladortimer
+  - Mantenerblanco
+  - Mantenercolornormal
+  - DecidirEstado
+  - sumarcontadorasinaltar
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

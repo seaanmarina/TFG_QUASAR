@@ -12,6 +12,8 @@ public class Control_BlancaA : MonoBehaviourPunCallbacks
     public int contadorPararBlanco;
 
     public bool CambiodeContador;
+    public bool EnviadoDesdeAzul;
+    public bool EnbiadoDesdeNaranja;
     
     // Start is called before the first frame update
     void Start()

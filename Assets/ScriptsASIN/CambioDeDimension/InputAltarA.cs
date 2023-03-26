@@ -15,9 +15,19 @@ public class InputAltarA : MonoBehaviourPunCallbacks
     bool controlador;
     int contador = 0;
 
+
+    public bool interaccionAzul;
+    public bool interaccionNaranja;
+    public bool PuedeChange;
+
     // Start is called before the first frame update
     void Start()
     {
+        interaccionAzul = false;
+        interaccionNaranja = false;
+        PuedeChange = false;
+
+
         contador = 1;
         controlador = true;
         controlblanca = controlador_blanca.GetComponent<Control_BlancaA>();
@@ -32,6 +42,17 @@ public class InputAltarA : MonoBehaviourPunCallbacks
     void Update()
     {
 
+        if(interaccionAzul && interaccionNaranja)
+        {
+            PuedeChange = true;
+        }
+        else
+        {
+            PuedeChange = false;
+        }
+
+
+
         if (_puedeInteraccionar)
         {
 
@@ -42,12 +63,12 @@ public class InputAltarA : MonoBehaviourPunCallbacks
                 pv.RPC("sumarcontador", RpcTarget.All);
                 controlador = false;
             }
-            else if (!_jugadorinteraccion && controlblanca.mantenerAltar > 0 && !controlador)
-            {
-                PhotonView pv = gameObject.GetComponent<PhotonView>();
-                pv.RPC("restarcontador", RpcTarget.All);
-                controlador = true;
-            }
+            //else if (!_jugadorinteraccion && controlblanca.mantenerAltar > 0 && !controlador)
+            //{
+            //    PhotonView pv = gameObject.GetComponent<PhotonView>();
+            //    pv.RPC("restarcontador", RpcTarget.All);
+            //    controlador = true;
+            //}
             //_cambiodecolor = !_cambiodecolor;
             //Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
             //base.photonView.RPC("cambiodecolor", RpcTarget.All);
@@ -79,14 +100,29 @@ public class InputAltarA : MonoBehaviourPunCallbacks
     [PunRPC]
     void sumarcontador()
     {
-        controlblanca.mantenerAltar = controlblanca.mantenerAltar + contador;
+       
         Debug.Log("Entro Contador=" + controlblanca.mantenerAltar);
+        StartCoroutine(sumarcontadorasinaltar());
 
 
 
     }
 
     [PunRPC]
+    IEnumerator sumarcontadorasinaltar()
+    {
+
+       
+            controlblanca.mantenerAltar = controlblanca.mantenerAltar + 1;
+            yield return new WaitForSeconds(5);
+            controlblanca.mantenerAltar = controlblanca.mantenerAltar - 1;
+            controlador = true;
+        
+    }
+
+
+
+        [PunRPC]
     void restarcontador()
     {
         Debug.Log("Salgo Contador=" + controlblanca.mantenerAltar);

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5057804474339393626}
+  - component: {fileID: 171736030096241194}
   - component: {fileID: 8458346539487286309}
   - component: {fileID: 5057804474339393627}
   - component: {fileID: 5057804474339393620}
@@ -39,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8458346539487286309
+--- !u!114 &171736030096241194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,6 +48,25 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5057804474339393617}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c762a58afeb604e4ea7cbdd080b4855f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dash: 0
+  jugadorinteraccion: 0
+  _salto: 0
+  _puedeInteraccionar: 0
+  input: {fileID: 0}
+  change: {fileID: 0}
+  inputaltar: {fileID: 0}
+--- !u!114 &8458346539487286309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057804474339393617}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be9ee42ca61c36943b810aae2a311f63, type: 3}
   m_Name: 
@@ -72,7 +92,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5057804474339393617}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e14b71fa983e32c4ba0b74f58ea9f89e, type: 3}
   m_Name: 

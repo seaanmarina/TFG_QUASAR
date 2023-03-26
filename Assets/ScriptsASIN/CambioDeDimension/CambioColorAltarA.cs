@@ -10,13 +10,22 @@ public class CambioColorAltarA : MonoBehaviourPunCallbacks
     public GameObject ObjetoACambiar1;
     public GameObject ObjetoACambiar2;
 
+    public bool Azul;
+    public bool Naranja;
+
+
+    public GameObject InputAltar;
+    InputAltarA input_altar;
+
 
     public GameObject cambiodeposicion;
 
     Material Material1;
     Material Material2;
+    Material Material3;
     public Material original;
     public Material cambiar;
+    public Material cambiarcolor;
     public bool mantener;
 
     private int puederestar;
@@ -32,6 +41,8 @@ public class CambioColorAltarA : MonoBehaviourPunCallbacks
     public GameObject controlador_blanca;
     Control_BlancaA controlblanca;
 
+    public bool estaCambiando;
+
 
 
 
@@ -40,11 +51,14 @@ public class CambioColorAltarA : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-
+        estaCambiando = false;
         alreadyExited = false;
 
         change = GameObject.FindGameObjectWithTag("CambioDimension");
         cambio_Dimension = change.GetComponent<CambioDimensionA>();
+
+
+        input_altar = InputAltar.GetComponent<InputAltarA>();
 
 
         controlblanca = controlador_blanca.GetComponent<Control_BlancaA>();
@@ -179,7 +193,7 @@ public class CambioColorAltarA : MonoBehaviourPunCallbacks
     [PunRPC]
     void cambiocontrolador()
     {
-        if (controlblanca.mantenerAltar >= 2 || mantener==true)
+        if (input_altar.PuedeChange || mantener==true)
         {
             mantener = true;
             //Debug.Log(mantener + "HA ENRTADO EN EL COLOR BLANCO");
@@ -196,12 +210,12 @@ public class CambioColorAltarA : MonoBehaviourPunCallbacks
 
 
 
-            if (cambio)
+            if (cambio && !estaCambiando)
         {
             PhotonView pv = gameObject.GetComponent<PhotonView>();
             //  Debug.Log("dentro del if");
-            Material1.color = cambiar.color;
-            Material2.color = cambiar.color;
+            Material1.color = cambiarcolor.color;
+            Material2.color = cambiarcolor.color;
             pv.RPC("cambiocontroladorotro", RpcTarget.All);
 
             /* for (int i = 0; i < puedesumar; i++)
@@ -216,7 +230,7 @@ public class CambioColorAltarA : MonoBehaviourPunCallbacks
 
                 
         }
-        else
+        else if(!estaCambiando)
         {
 
                 Debug.Log("Estoy dentro de else normal mantener" + gameObject.name);
@@ -240,11 +254,54 @@ public class CambioColorAltarA : MonoBehaviourPunCallbacks
     [PunRPC]
     void cambiocontroladorotro()
     {
-        Material1.color = cambiar.color;
-        Material2.color = cambiar.color;
+        estaCambiando = true;
+        //Material1.color = cambiar.color;
+        //Material2.color = cambiar.color;
+
+        if (Azul)
+            input_altar.interaccionAzul = true;
+        else
+            input_altar.interaccionNaranja = true;
+
+
+        StartCoroutine(Mantenercolornormal());
         Debug.Log("Estoy dentro del cambio de color por el cambio");
 
     }
+
+
+    [PunRPC]
+    IEnumerator Mantenercolornormal()
+    {
+
+        Material1.color = cambiarcolor.color;
+        Material2.color = cambiarcolor.color;
+        yield return new WaitForSeconds(5);
+        PhotonView pv = gameObject.GetComponent<PhotonView>();
+        pv.RPC("DecidirEstado", RpcTarget.All);
+
+
+    }
+
+
+
+    [PunRPC]
+    void DecidirEstado()
+    {
+        if(controlblanca.mantenerAltar < 2)
+        {
+            estaCambiando = false;
+        }
+        //Material1.color = cambiar.color;
+        //Material2.color = cambiar.color;
+        if (Azul)
+            input_altar.interaccionAzul = false;
+        else
+            input_altar.interaccionNaranja = false;
+
+
+    }
+
 
 
 
@@ -262,6 +319,13 @@ public class CambioColorAltarA : MonoBehaviourPunCallbacks
         
 
     }
+
+
+
+    
+
+
+
 
     [PunRPC]
     void iniciarcorrutina()
