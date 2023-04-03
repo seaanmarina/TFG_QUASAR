@@ -231,6 +231,58 @@ PrefabInstance:
       propertyPath: ObservedComponents.Array.data[0]
       value: 
       objectReference: {fileID: 6988946636892576256}
+    - target: {fileID: 5057804474339393616, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393616, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393616, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c8b9d354843597043b165dc7b0a63b1a, type: 2}
+    - target: {fileID: 5057804474339393616, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393616, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.011143252
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393616, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
+      value: 0.4362561
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393616, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[2].time
+      value: 0.9925706
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393616, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.53565407
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393616, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
+      value: 0.5181192
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393616, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].inSlope
+      value: -0.052448053
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393616, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393616, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].outSlope
+      value: -0.052448053
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057804474339393616, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].outWeight
+      value: 0.40695775
+      objectReference: {fileID: 0}
     - target: {fileID: 5057804474339393617, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
       propertyPath: m_Name
       value: Player_alone
@@ -331,7 +383,9 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1769166559190729803, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+    - {fileID: 3542294732001943168, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
 --- !u!96 &1242694720183836994 stripped
 TrailRenderer:
@@ -357,11 +411,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDir: {x: 0, y: 0, z: 0}
   dashSpeed: 20
-  dashTime: 0.25
+  dashTime: 0.1
   tr: {fileID: 1242694720183836994}
   cam: {fileID: 3490802898333912566}
+  particulas: {fileID: 1656936163812980496}
+  iniciocaminar: 0
   gravity: 25
   jumpforce: 8
+  valorprueba: 0
+  valordash: 0
   speed: 7
 --- !u!114 &3687582868792961868
 MonoBehaviour:
@@ -435,5 +493,10 @@ MonoBehaviour:
 --- !u!4 &1242694720183837000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5057804474339393626, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
+  m_PrefabInstance: {fileID: 6272984439478690066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1656936163812980496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4751439122545776130, guid: 1262c9efab0e6bc488ebb28345deff32, type: 3}
   m_PrefabInstance: {fileID: 6272984439478690066}
   m_PrefabAsset: {fileID: 0}
