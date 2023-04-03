@@ -19,7 +19,7 @@ public class InputHandlerA : MonoBehaviour
 
 
 
-
+    public bool saltoControlado;
 
 
 
@@ -59,6 +59,11 @@ public class InputHandlerA : MonoBehaviour
 
         _salto = false;
         view = GetComponent<PhotonView>();
+
+
+
+        saltoControlado = false;
+
     }
 
     // Update is called once per frame
@@ -151,6 +156,16 @@ public class InputHandlerA : MonoBehaviour
             }
            
         }
+    }
+
+
+
+    void OnSalto()
+    {
+
+        saltoControlado = !saltoControlado;
+        Debug.Log("Salto Controlado es " + saltoControlado);
+
     }
 
 

@@ -417,7 +417,8 @@ MonoBehaviour:
   particulas: {fileID: 1656936163812980496}
   iniciocaminar: 0
   gravity: 25
-  jumpforce: 8
+  gravity2: 50
+  jumpforce: 15
   valorprueba: 0
   valordash: 0
   speed: 7

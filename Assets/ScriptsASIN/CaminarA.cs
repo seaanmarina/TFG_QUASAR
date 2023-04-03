@@ -34,7 +34,11 @@ public class CaminarA : MonoBehaviour
     private Vector2 moveVector;
     private float verticalVelocity;
     public float gravity = 25;
-    public float jumpforce = 8;
+    public float gravity2 = 50;
+
+
+
+    public float jumpforce = 15;
     public float valorprueba;
 
     float principiodash = 0;
@@ -77,7 +81,8 @@ public class CaminarA : MonoBehaviour
         if (view.IsMine)
         {
 
-           // Debug.Log(speed);
+            
+            // Debug.Log(speed);
             moveVector = Vector2.zero;
            // moveVector.x = _inputHandler.Horizontal * speed;
 
@@ -172,18 +177,53 @@ public class CaminarA : MonoBehaviour
                 /// Debug.Log("estoy en el terra");
                 //verticalVelocity = -1;
 
-                if (_inputHandler._salto)
+                //if (_inputHandler._salto)
+                //{
+
+                //    verticalVelocity = jumpforce;
+                //    _inputHandler._salto = false;
+                //}
+
+                if (_inputHandler.saltoControlado)
                 {
 
                     verticalVelocity = jumpforce;
-                    _inputHandler._salto = false;
+                    
                 }
+                //else if (_inputHandler.saltoControlado)
+                //{
+
+                //    verticalVelocity = jumpforce;
+
+                //}
 
 
             }
 
             else
             {
+                if (_inputHandler.saltoControlado)
+                {
+                    if (verticalVelocity > 0)
+                    {
+                        verticalVelocity -= gravity  * Time.deltaTime;
+
+                        moveVector = lastMove;
+                    }
+                    else
+                    {
+                        verticalVelocity -= 70 * Time.deltaTime;
+
+                        moveVector = lastMove;
+                    }
+
+                }
+                else
+                {
+                    verticalVelocity -= 70 * Time.deltaTime;
+
+                    moveVector = lastMove;
+                }
                 //  Debug.Log("no estoy e nel suelo");
                 verticalVelocity -= gravity * Time.deltaTime;
 
