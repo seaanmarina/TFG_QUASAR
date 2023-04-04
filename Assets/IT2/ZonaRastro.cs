@@ -9,6 +9,10 @@ public class ZonaRastro : MonoBehaviourPunCallbacks
     public GameObject GamecontadorRastro;
     ContadorRastro ObjetocontadorRastro;
 
+    public bool interaccionAzul;
+
+    public int zona;
+
     private bool sumar;
     // Start is called before the first frame update
     void Start()
@@ -31,7 +35,9 @@ public class ZonaRastro : MonoBehaviourPunCallbacks
         if (PhotonNetwork.LocalPlayer.ActorNumber == other.GetComponent<PhotonView>().Owner.ActorNumber)
         {
             Debug.Log("Estoy dentro");
-            
+
+
+
             PhotonView pv = gameObject.GetComponent<PhotonView>();
 
             pv.RPC("SumarContadorRastro", RpcTarget.All);
@@ -62,6 +68,17 @@ public class ZonaRastro : MonoBehaviourPunCallbacks
     {
         if (sumar)
         {
+            if (interaccionAzul)
+            {
+                ObjetocontadorRastro.interaccionAzul = true;
+                //ObjetocontadorRastro.zonaAzul = zona;
+            }
+            else
+            {
+                ObjetocontadorRastro.interaccionNaranja = true;
+                //ObjetocontadorRastro.zonaNaranja = zona;
+            }
+
             ObjetocontadorRastro.contadorRastroLuz++;
             sumar = false;
         }
@@ -74,6 +91,11 @@ public class ZonaRastro : MonoBehaviourPunCallbacks
     {
         if (!sumar)
         {
+            if (interaccionAzul)
+                ObjetocontadorRastro.interaccionAzul = false;
+            else
+                ObjetocontadorRastro.interaccionNaranja = false;
+
             ObjetocontadorRastro.contadorRastroLuz--;
             sumar = true;
         }

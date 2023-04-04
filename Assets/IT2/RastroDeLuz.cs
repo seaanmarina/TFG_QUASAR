@@ -22,6 +22,8 @@ public class RastroDeLuz : MonoBehaviourPunCallbacks
     private bool PuedeBlanco;
     private float startTime;
 
+   
+   
 
     public float emission;
 
@@ -48,8 +50,11 @@ public class RastroDeLuz : MonoBehaviourPunCallbacks
     {
         if (ObjetocontadorRastro.contadorRastroLuz>=3 && PuedeBlanco)
         {
-            material.SetColor("_EmissionColor", Color.white);
-            CambioDesdeBlanco = true;
+            if (ObjetocontadorRastro.MismazonaDiferentesMundos)
+            {
+                material.SetColor("_EmissionColor", Color.white);
+                CambioDesdeBlanco = true;
+            }
 
         }
 
@@ -73,8 +78,14 @@ public class RastroDeLuz : MonoBehaviourPunCallbacks
         //if (phView.IsMine)
         if (PhotonNetwork.LocalPlayer.ActorNumber == other.GetComponent<PhotonView>().Owner.ActorNumber)
         {
+
+
             PuedeBlanco = true;
             material.EnableKeyword("_EMISSION");
+
+            ContinuaCorrutina = false;
+
+            material.SetColor("_EmissionColor", Original * 1);
             PhotonView pv = gameObject.GetComponent<PhotonView>();
            
             pv.RPC("SumarContadorRastro", RpcTarget.All);
@@ -93,7 +104,8 @@ public class RastroDeLuz : MonoBehaviourPunCallbacks
             PuedeBlanco = false;
             //material.DisableKeyword("_EMISSION");
             PhotonView pv = gameObject.GetComponent<PhotonView>();
-
+            ContinuaCorrutina = true;
+            StartCoroutine(Lerp());
             pv.RPC("RestarContadorRastro", RpcTarget.All);
         }
     }
@@ -103,10 +115,9 @@ public class RastroDeLuz : MonoBehaviourPunCallbacks
     [PunRPC]
     void SumarContadorRastro()
     {
-        ContinuaCorrutina = false;
         
-        material.SetColor("_EmissionColor", Original * 1);
         ObjetocontadorRastro.contadorRastroLuz++;
+        
     }
 
 
@@ -114,9 +125,9 @@ public class RastroDeLuz : MonoBehaviourPunCallbacks
     [PunRPC]
     void RestarContadorRastro()
     {
-        ContinuaCorrutina = true;
+        
         ObjetocontadorRastro.contadorRastroLuz--;
-        StartCoroutine(Lerp());
+       
         //float t = (Time.time - 1f) / 2f;
         //float emission = Mathf.Lerp(1, 0, t);
 
