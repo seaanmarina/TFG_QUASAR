@@ -46,14 +46,14 @@ public class RastroDeLuz : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (ObjetocontadorRastro.contadorRastroLuz>=2 && PuedeBlanco)
+        if (ObjetocontadorRastro.contadorRastroLuz>=3 && PuedeBlanco)
         {
             material.SetColor("_EmissionColor", Color.white);
             CambioDesdeBlanco = true;
 
         }
 
-        else if (CambioDesdeBlanco && ObjetocontadorRastro.contadorRastroLuz < 2)
+        else if (CambioDesdeBlanco && ObjetocontadorRastro.contadorRastroLuz < 3)
         {
             //PhotonView pv = gameObject.GetComponent<PhotonView>();
             //StartCoroutine(Lerp());
