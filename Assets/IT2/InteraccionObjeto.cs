@@ -11,10 +11,10 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
 
     
 
-    Puede_Interaccionar puede;
+    Puede_InteraccionarA puede;
     public GameObject interaccion;
 
-    Input_player input_player;
+    Input_playerA input_player;
     public GameObject input;
 
     InputObj _inputobj;
@@ -34,13 +34,13 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
 
 
         input = GameObject.FindGameObjectWithTag("Input");
-        input_player = input.GetComponent<Input_player>();
+        input_player = input.GetComponent<Input_playerA>();
 
         //player = GameObject.FindGameObjectWithTag("Player");
         //inputhandler = player.GetComponent<InputHandler>();
 
 
-        puede = interaccion.GetComponent<Puede_Interaccionar>();
+        puede = interaccion.GetComponent<Puede_InteraccionarA>();
 
 
         owner = gameObject.GetComponent<PhotonView>();

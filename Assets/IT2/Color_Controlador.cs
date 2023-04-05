@@ -17,12 +17,16 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
     private int puedesumar;
 
 
+    public Color Blanco;
+    public Color Actualizado;
+    public Color Original;
+
 
     public GameObject controlador_blanca;
-    Control_Blanca controlblanca;
+    Control_BlancaA controlblanca;
 
     public GameObject ObjetoContadorBlanca;
-    Control_Blanca control_blanca;
+    Control_BlancaA control_blanca;
 
 
     PhotonView pv;
@@ -31,12 +35,19 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
     void Start()
     {
 
-        controlblanca = controlador_blanca.GetComponent<Control_Blanca>();
+        controlblanca = controlador_blanca.GetComponent<Control_BlancaA>();
 
-
+       
         Material1 = ObjetoACambiar.GetComponent<Renderer>().material;
+        Actualizado = Material1.GetColor("_EmissionColor");
+        Material1.DisableKeyword("_EMISSION");
+
+
+        original = GetComponent<Renderer>().material;
+        Original = original.GetColor("_EmissionColor");
+
         cambio = false;
-        control_blanca = ObjetoContadorBlanca.GetComponent<Control_Blanca>();
+        control_blanca = ObjetoContadorBlanca.GetComponent<Control_BlancaA>();
         puedesumar = 1;
         puederestar = 0;
        
@@ -65,6 +76,7 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
             PhotonView pv = gameObject.GetComponent<PhotonView>();
             //  Debug.Log("dentro del if");
             Material1.color = blanco.color;
+
             pv.RPC("cambiocontroladorblanco", RpcTarget.All);
 
         }
@@ -77,7 +89,12 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
             {
                 PhotonView pv = gameObject.GetComponent<PhotonView>();
                 //  Debug.Log("dentro del if");
-                Material1.color = cambiar.color;
+               Material1.color = cambiar.color;
+               // Material1.SetColor("_EmissionColor", Actualizado);  //LO HE QUITADO PORQUE DIRECTAMENTE LE HE PUESTO EL COLOR DEL BRILLO EN EL MATERIAL QUE TIENE. 
+               //SOBRE LO DE ARRIBA, COMO EL BRILLO ESTÁ APAGADO, EL COLOR QUE SE LE PONGA NO AFECTA
+               //A COMO SE VEA ORIGINALMENTE EL COLOR. CON LA COMBINACION DEL COLOR DE LA BASE CON 
+               //EL COLOR DE LA EMISSION SE VE DELUXE
+                Material1.EnableKeyword("_EMISSION");
                 pv.RPC("cambiocontroladorotro", RpcTarget.All);
 
                 /* for (int i = 0; i < puedesumar; i++)
@@ -93,6 +110,8 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
             else
             {
                 Material1.color = original.color;
+             //   Material1.SetColor("_EmissionColor", Original);
+                Material1.DisableKeyword("_EMISSION");
 
                 /* for (int i = 0; i < puederestar; i++)
                  {
@@ -110,7 +129,9 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
     [PunRPC]
     void cambiocontroladorotro()
     {
-        Material1.color = cambiar.color;
+        Material1.EnableKeyword("_EMISSION");
+        //Material1.SetColor("_EmissionColor", Actualizado);
+       Material1.color = cambiar.color;
 
 
     }
@@ -120,6 +141,7 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
     void cambiocontroladorblanco()
     {
         Material1.color = blanco.color;
+        Material1.SetColor("_EmissionColor", Color.white);
 
 
     }

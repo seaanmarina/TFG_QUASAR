@@ -4772,8 +4772,8 @@ GameObject:
   - component: {fileID: 1509881921}
   - component: {fileID: 1509881924}
   - component: {fileID: 1509881922}
-  - component: {fileID: 1509881926}
-  - component: {fileID: 1509881925}
+  - component: {fileID: 1509881928}
+  - component: {fileID: 1509881927}
   m_Layer: 0
   m_Name: AzulCuboGameObject
   m_TagString: Untagged
@@ -4831,7 +4831,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1509881925
+--- !u!114 &1509881927
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4840,7 +4840,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1509881920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ccfdc67466773145be8318c00738e31, type: 3}
+  m_Script: {fileID: 11500000, guid: b4cf0ddde5420b2409747e49561635fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cambio: 0
@@ -4848,13 +4848,9 @@ MonoBehaviour:
   original: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
   cambiar: {fileID: 2100000, guid: 1b209e0737e1db1449eec575f29f5097, type: 2}
   blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
-  StartColor: {r: 1, g: 0.79607844, b: 0.46666667, a: 0}
-  EndColor: {r: 0.63529414, g: 0.9098039, b: 1, a: 0}
-  input: {fileID: 0}
   controlador_blanca: {fileID: 537349078}
   ObjetoContadorBlanca: {fileID: 537349078}
-  yaheentrado: 0
---- !u!114 &1509881926
+--- !u!114 &1509881928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4863,7 +4859,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1509881920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8643c6214984bee4ea5fe1703fd3b498, type: 3}
+  m_Script: {fileID: 11500000, guid: 19937adc69eea5a45834757a8c66696a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ObjetoACambiar: {fileID: 916786894}
@@ -4955,9 +4951,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1532392530}
   - component: {fileID: 1532392531}
-  - component: {fileID: 1532392535}
+  - component: {fileID: 1532392537}
   - component: {fileID: 1532392533}
-  - component: {fileID: 1532392534}
+  - component: {fileID: 1532392536}
   m_Layer: 0
   m_Name: NaranjaCuboGameObject
   m_TagString: Untagged
@@ -5015,7 +5011,7 @@ MonoBehaviour:
   sceneViewId: 9
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &1532392534
+--- !u!114 &1532392536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5024,7 +5020,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1532392529}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ccfdc67466773145be8318c00738e31, type: 3}
+  m_Script: {fileID: 11500000, guid: b4cf0ddde5420b2409747e49561635fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cambio: 0
@@ -5032,13 +5028,9 @@ MonoBehaviour:
   original: {fileID: 2100000, guid: 1b209e0737e1db1449eec575f29f5097, type: 2}
   cambiar: {fileID: 2100000, guid: 28df1d5ee061f734c835d9ca35110ac2, type: 2}
   blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
-  StartColor: {r: 0.63529414, g: 0.9098039, b: 1, a: 0}
-  EndColor: {r: 1, g: 0.79607844, b: 0.46666667, a: 0}
-  input: {fileID: 0}
   controlador_blanca: {fileID: 537349078}
   ObjetoContadorBlanca: {fileID: 537349078}
-  yaheentrado: 0
---- !u!114 &1532392535
+--- !u!114 &1532392537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5047,7 +5039,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1532392529}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8643c6214984bee4ea5fe1703fd3b498, type: 3}
+  m_Script: {fileID: 11500000, guid: 19937adc69eea5a45834757a8c66696a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ObjetoACambiar: {fileID: 259715463}
