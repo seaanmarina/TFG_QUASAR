@@ -17,6 +17,10 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
     private int puedesumar;
 
 
+    public GameObject CuboPrincipal;
+    ParticleSystem sistema;
+
+
     public Color Blanco;
     public Color Actualizado;
     public Color Original;
@@ -35,6 +39,10 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
     void Start()
     {
 
+        sistema = CuboPrincipal.GetComponent<ParticleSystem>();
+        sistema.startSize = 0;
+
+
         controlblanca = controlador_blanca.GetComponent<Control_BlancaA>();
 
        
@@ -43,8 +51,8 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
         Material1.DisableKeyword("_EMISSION");
 
 
-        original = GetComponent<Renderer>().material;
-        Original = original.GetColor("_EmissionColor");
+      // original = CuboPrincipal.GetComponent<Renderer>().material;
+       // Original = original.GetColor("_EmissionColor");
 
         cambio = false;
         control_blanca = ObjetoContadorBlanca.GetComponent<Control_BlancaA>();
@@ -76,7 +84,7 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
             PhotonView pv = gameObject.GetComponent<PhotonView>();
             //  Debug.Log("dentro del if");
             Material1.color = blanco.color;
-
+            sistema.startSize = 0.1f;
             pv.RPC("cambiocontroladorblanco", RpcTarget.All);
 
         }
@@ -90,10 +98,11 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
                 PhotonView pv = gameObject.GetComponent<PhotonView>();
                 //  Debug.Log("dentro del if");
                Material1.color = cambiar.color;
-               // Material1.SetColor("_EmissionColor", Actualizado);  //LO HE QUITADO PORQUE DIRECTAMENTE LE HE PUESTO EL COLOR DEL BRILLO EN EL MATERIAL QUE TIENE. 
-               //SOBRE LO DE ARRIBA, COMO EL BRILLO ESTÁ APAGADO, EL COLOR QUE SE LE PONGA NO AFECTA
-               //A COMO SE VEA ORIGINALMENTE EL COLOR. CON LA COMBINACION DEL COLOR DE LA BASE CON 
-               //EL COLOR DE LA EMISSION SE VE DELUXE
+                sistema.startSize = 0.1f;
+                // Material1.SetColor("_EmissionColor", Actualizado);  //LO HE QUITADO PORQUE DIRECTAMENTE LE HE PUESTO EL COLOR DEL BRILLO EN EL MATERIAL QUE TIENE. 
+                //SOBRE LO DE ARRIBA, COMO EL BRILLO ESTÁ APAGADO, EL COLOR QUE SE LE PONGA NO AFECTA
+                //A COMO SE VEA ORIGINALMENTE EL COLOR. CON LA COMBINACION DEL COLOR DE LA BASE CON 
+                //EL COLOR DE LA EMISSION SE VE DELUXE
                 Material1.EnableKeyword("_EMISSION");
                 pv.RPC("cambiocontroladorotro", RpcTarget.All);
 
@@ -109,6 +118,7 @@ public class Color_Controlador : MonoBehaviourPunCallbacks
             }
             else
             {
+                sistema.startSize = 0;
                 Material1.color = original.color;
              //   Material1.SetColor("_EmissionColor", Original);
                 Material1.DisableKeyword("_EMISSION");
