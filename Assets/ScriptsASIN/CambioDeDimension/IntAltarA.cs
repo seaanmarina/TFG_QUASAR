@@ -10,7 +10,7 @@ public class IntAltarA : MonoBehaviourPunCallbacks
     public GameObject ObjetoACambiar2;
     public GameObject ControlObjeto;
 
-
+    
 
     //Puede_Interaccionar puede;
     //public GameObject interaccion;
@@ -22,7 +22,8 @@ public class IntAltarA : MonoBehaviourPunCallbacks
     Material Material1;
     public Material original;
     public Material cambio;
-    CambioColorAltarA controladordelcambio;
+    //CambioColorAltarA controladordelcambio;
+    InterAltar Altarasincrono;
     PhotonView view;
     PhotonView owner;
     private GameObject objeto;
@@ -47,7 +48,8 @@ public class IntAltarA : MonoBehaviourPunCallbacks
         owner = gameObject.GetComponent<PhotonView>();
         _inputobj = GetComponent<InputObjA>();
         Material1 = ObjetoACambiar1.GetComponent<Renderer>().material;
-        controladordelcambio = GetComponent<CambioColorAltarA>();
+        //controladordelcambio = GetComponent<CambioColorAltarA>();
+        Altarasincrono = GetComponent<InterAltar>();
         view = GetComponent<PhotonView>();
 
     }
@@ -113,8 +115,12 @@ public class IntAltarA : MonoBehaviourPunCallbacks
             //{
             // controladordelcambio.cambio = _inputobj._cambiodecolor;
             //Debug.Log("estoy interaccoinando a tope de power");
+            if(input_player._jugadorinteraccion)
+            Altarasincrono.poderPonerseBlanco = 1;
 
-            controladordelcambio.cambio = input_player._jugadorinteraccion;
+
+            Altarasincrono.cambio = input_player._jugadorinteraccion;
+            //Altarasincrono.cambiocontrolador();
             pv.RPC("cambiocontrolador", RpcTarget.All);
             //this.photonView.RPC("CambioColor", RpcTarget.All);
             //}
@@ -146,7 +152,7 @@ public class IntAltarA : MonoBehaviourPunCallbacks
         if (PhotonNetwork.LocalPlayer.ActorNumber == other.GetComponent<PhotonView>().Owner.ActorNumber)
         {
             input_player._puedeInteraccionar = false;
-            controladordelcambio.cambio = false;
+            Altarasincrono.cambio = false;
         }
     }
 

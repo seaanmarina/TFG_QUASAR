@@ -77,6 +77,13 @@ MonoBehaviour:
   - QuitarRastro
   - LlamadaCoroutina
   - Lerp
+  - cambiocontroladorotros
+  - sumarcontadorasinAltar
+  - Controladortimer2
+  - restarcontador2
+  - sumarcontador2
+  - SumarContadorNombre
+  - CambiarNombre
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

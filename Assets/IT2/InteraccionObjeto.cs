@@ -14,7 +14,7 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
     Puede_InteraccionarA puede;
     public GameObject interaccion;
 
-    Input_playerA input_player;
+    Input_Objetos input_player;
     public GameObject input;
 
     InputObj _inputobj;
@@ -34,7 +34,7 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
 
 
         input = GameObject.FindGameObjectWithTag("Input");
-        input_player = input.GetComponent<Input_playerA>();
+        input_player = input.GetComponent<Input_Objetos>();
 
         //player = GameObject.FindGameObjectWithTag("Player");
         //inputhandler = player.GetComponent<InputHandler>();
@@ -105,8 +105,9 @@ public class InteraccionObjeto : MonoBehaviourPunCallbacks
 
             //if (_inputobj._cambiodecolor)
             //{
-           // controladordelcambio.cambio = _inputobj._cambiodecolor;
+            // controladordelcambio.cambio = _inputobj._cambiodecolor;
             //Debug.Log("estoy interaccoinando a tope de power");
+            
 
             controladordelcambio.cambio = input_player._jugadorinteraccion;
             pv.RPC("cambiocontrolador", RpcTarget.All);

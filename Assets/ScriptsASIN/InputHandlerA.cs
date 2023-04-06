@@ -27,7 +27,7 @@ public class InputHandlerA : MonoBehaviour
     Puede_InteraccionarA permitido;
      GameObject interaccion;
 
-    Input_playerA input_player;
+    Input_Objetos input_player;
     public GameObject input;
 
     CambioDimensionA cambio_Dimension;
@@ -52,7 +52,7 @@ public class InputHandlerA : MonoBehaviour
         contador = false;
 
         input = GameObject.FindGameObjectWithTag("Input");
-        input_player = input.GetComponent<Input_playerA>();
+        input_player = input.GetComponent<Input_Objetos>();
 
         inputaltar = GameObject.FindGameObjectWithTag("inputAltar");
         input_Altar = inputaltar.GetComponent<InputAltarA>();
