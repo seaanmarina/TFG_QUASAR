@@ -10,6 +10,7 @@ TagManager:
   - inputAltar
   - CambioDimension
   - Interaccion
+  - Intermediario
   layers:
   - Default
   - TransparentFX

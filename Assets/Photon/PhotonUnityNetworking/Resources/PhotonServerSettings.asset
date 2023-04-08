@@ -84,6 +84,9 @@ MonoBehaviour:
   - sumarcontador2
   - SumarContadorNombre
   - CambiarNombre
+  - cogerValor
+  - VariableJugador
+  - Desactive
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

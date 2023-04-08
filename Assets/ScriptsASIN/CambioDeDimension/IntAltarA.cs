@@ -10,7 +10,7 @@ public class IntAltarA : MonoBehaviourPunCallbacks
     public GameObject ObjetoACambiar2;
     public GameObject ControlObjeto;
 
-    
+    bool hacer;
 
     //Puede_Interaccionar puede;
     //public GameObject interaccion;
@@ -27,12 +27,20 @@ public class IntAltarA : MonoBehaviourPunCallbacks
     PhotonView view;
     PhotonView owner;
     private GameObject objeto;
+
+
+    public GameObject intermedioBlanco;
+    PonerseBlancoComunicacion intermediario;
+
+
     // Start is called before the first frame update
     [PunRPC]
     void Start()
     {
 
+        hacer = true;
 
+        intermediario = intermedioBlanco.GetComponent<PonerseBlancoComunicacion>();
 
 
         input = GameObject.FindGameObjectWithTag("inputAltar");
@@ -115,11 +123,41 @@ public class IntAltarA : MonoBehaviourPunCallbacks
             //{
             // controladordelcambio.cambio = _inputobj._cambiodecolor;
             //Debug.Log("estoy interaccoinando a tope de power");
-            if(input_player._jugadorinteraccion)
-            Altarasincrono.poderPonerseBlanco = 1;
 
+
+            int actorNr = other.GetComponent<PhotonView>().Owner.ActorNumber;
+            int viewId = actorNr * PhotonNetwork.MAX_VIEW_IDS + 1;
+
+            //Debug.Log("INTERACCIOOOOONNNN " + viewId);
+
+            if(intermediario.poderPonerseBlanco == 0 && !hacer)
+            {///CUANDO PARE LO DE BLANCO, ESTO SE PONDRÁ EN 0, POR LO QUE HARA QUE LAS BOLEANAS
+                //DE  LOS JUGADORES SE PONGAN EN FALSE PARA QUE TENGAN QUE SER ACTIVADAS SI SE VUELVE 
+                // A INTERACCIONAR
+                
+                pv.RPC("Desactive", RpcTarget.All, viewId);
+            }
+
+            bool nocambioActivar = true;
+            if (input_player._jugadorinteraccion && hacer)
+                pv.RPC("VariableJugador", RpcTarget.All, viewId);
+            //if (input_player._jugadorinteraccion && nocambioActivar)
+            //{
+            //    Altarasincrono.nocambio = false;
+            //    nocambioActivar = false;
+            //}
+            //else if(!input_player._jugadorinteraccion && !nocambioActivar)
+            //{
+                
+            //    nocambioActivar = true;
+            //}
+
+            //if (input_player._jugadorinteraccion)
+            //    intermediario.poderPonerseBlanco = 1;
 
             Altarasincrono.cambio = input_player._jugadorinteraccion;
+           
+
             //Altarasincrono.cambiocontrolador();
             pv.RPC("cambiocontrolador", RpcTarget.All);
             //this.photonView.RPC("CambioColor", RpcTarget.All);
@@ -143,7 +181,34 @@ public class IntAltarA : MonoBehaviourPunCallbacks
 
     //}
 
+    [PunRPC]
+    void VariableJugador(int id)
+    {
 
+        intermediario.poderPonerseBlanco = 1;
+        PhotonView pvv = PhotonView.Find(id); // obtiene el PhotonView del jugador remoto
+            GameObject playerGO = pvv.gameObject;
+            RecogerVariablesJugador playerController = playerGO.GetComponent<RecogerVariablesJugador>();
+            playerController.booleanaPonerseBlanco = true;
+             hacer = false;
+
+
+
+    }
+
+
+    [PunRPC]
+    void Desactive(int id)
+    {
+
+        PhotonView pvv = PhotonView.Find(id); // obtiene el PhotonView del jugador remoto
+        GameObject playerGO = pvv.gameObject;
+        RecogerVariablesJugador playerController = playerGO.GetComponent<RecogerVariablesJugador>();
+        playerController.booleanaPonerseBlanco = false;
+        hacer = true;
+
+
+    }
 
 
     [PunRPC]

@@ -25,10 +25,13 @@ public class InputAltarA : MonoBehaviourPunCallbacks
     public bool interaccionNaranja;
     public bool PuedeChange;
 
+
+    public bool reset;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        reset = false;
         interaccion = GameObject.FindGameObjectWithTag("Interaccion");
         permitido = interaccion.GetComponent<Puede_InteraccionarA>();
 
@@ -71,7 +74,7 @@ public class InputAltarA : MonoBehaviourPunCallbacks
         {
             Debug.Log("Pico pala aqui estoy");
             StopAllCoroutines();
-            controlblanca.contadorAsin = 0;
+           controlblanca.contadorAsin = 0;
             cambiodetiempo = false;
 
             Debug.Log("Estoy en Cambiodetiempo");
@@ -174,31 +177,35 @@ public class InputAltarA : MonoBehaviourPunCallbacks
     [PunRPC]
     IEnumerator sumarcontadorasinAltar()
     {
+        
 
-        Debug.Log("Estoy en sumarcontadorasin antes");
-        while (permitido.tiempototal == 0)
-        {
-            Debug.Log("No tengo tiempo de inicio");
-            yield return null;
-        }
-        //controlblanca.contadorAsin = controlblanca.contadorAsin + 1;
-        //if (sigueblanca)
-        //    StopCoroutine(sumarcontadorasin());
+            Debug.Log("Estoy en sumarcontadorasin antes");
+            while (permitido.tiempototal == 0)
+            {
+                Debug.Log("No tengo tiempo de inicio");
+                yield return null;
+            }
+            //controlblanca.contadorAsin = controlblanca.contadorAsin + 1;
+            //if (sigueblanca)
+            //    StopCoroutine(sumarcontadorasin());
 
-        float tiempo = permitido.tiempototal * 5 + 3.5f * 2;
-
-
-        controlblanca.contadorAsin = controlblanca.contadorAsin + 1;
+            float tiempo = permitido.tiempototal * 5 + 3.5f * 2;
 
 
-        Debug.Log("Estoy en _jugadorinteraccion despues");
-        // Debug.Log("Entro Contador=" + tiempo);
-        yield return new WaitForSeconds(tiempo);
+            controlblanca.contadorAsin = controlblanca.contadorAsin + 1;
+
+
+            Debug.Log("Estoy en _jugadorinteraccion despues");
+            // Debug.Log("Entro Contador=" + tiempo);
+            yield return new WaitForSeconds(tiempo);
+            //controlblanca.contadorAsin = controlblanca.contadorAsin + -1;
+            //controlador = true;
+        
         controlblanca.contadorAsin = controlblanca.contadorAsin + -1;
         controlador = true;
-
         permitido.tiempototal = 0;
         Debug.Log("Estoy en saliendo");
+            
     }
 
 

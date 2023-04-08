@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3927809613331260283}
   - component: {fileID: 7530613994238009733}
   - component: {fileID: 8211297115249035306}
+  - component: {fileID: 9052978170591186978}
   m_Layer: 0
   m_Name: Players
   m_TagString: Untagged
@@ -92,6 +93,19 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &9052978170591186978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296365836923007169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e53bbf83848d404dbab3c3ee0bd3d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  booleanaPonerseBlanco: 0
 --- !u!1 &630482555709704229
 GameObject:
   m_ObjectHideFlags: 0
