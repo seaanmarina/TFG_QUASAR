@@ -717,10 +717,12 @@ public class InterAltar : MonoBehaviourPunCallbacks
         if (control_blanca.contadorAsin >= 2 && intermediario.poderPonerseBlanco == 1)
 
         {
-
+            //StopAllCoroutines();
+            Material1.DisableKeyword("_EMISSION");
+            Material2.DisableKeyword("_EMISSION");
             //CREO QUE ENTONCES SOLO SIRVE PARA DOS PERSONAS PORQUE EN CUANTO LO DETECTE, SE CAMBIARÁ, AUNQUE CREO QUE SIRVE
             PhotonView pv = gameObject.GetComponent<PhotonView>();
-            Debug.Log("dentro del if" + gameObject.name);
+            Debug.Log("LOCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL");
             Material1.EnableKeyword("_EMISSION");
 
             Material1.color = blanco.color;
@@ -963,6 +965,7 @@ public class InterAltar : MonoBehaviourPunCallbacks
 
         for (int i = 0; i < 5; i++)
         {
+            Debug.Log("dentro de corrutina");
             if (primero)
             {
                 cambio1 = endColor;
