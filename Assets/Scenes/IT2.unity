@@ -309,6 +309,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1982616898}
+  - {fileID: 1711216167}
   m_Father: {fileID: 1020550188}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7114,6 +7115,7 @@ MonoBehaviour:
   input: {fileID: 0}
   original: {fileID: 2100000, guid: 55a0c358a91e4c547a17140d47be75f3, type: 2}
   cambio: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  Local: {fileID: 1198569595}
   intermedioBlanco: {fileID: 250663013}
 --- !u!114 &660173248
 MonoBehaviour:
@@ -7134,7 +7136,7 @@ MonoBehaviour:
   Azul: 1
   Naranja: 0
   InputAltar: {fileID: 224177552}
-  cambiodeposicion: {fileID: 1489482454}
+  cambiodeposicion: {fileID: 1985308836}
   ObjetoCambiar3Local: {fileID: 775704004}
   change: {fileID: 0}
   controlador_blanca: {fileID: 537349078}
@@ -7146,6 +7148,7 @@ MonoBehaviour:
   EndColor: {r: 0.039215688, g: 0.93333334, b: 0.9607843, a: 0}
   IInput: {fileID: 0}
   ObjetoContadorBlanca: {fileID: 537349078}
+  valor: 0
   nocambio: 0
   yaheentrado: 0
   intermedioBlanco: {fileID: 250663013}
@@ -13762,6 +13765,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 660173242}
+  - {fileID: 1198569596}
   m_Father: {fileID: 1443503740}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13947,6 +13951,87 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189762167}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1198569595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198569596}
+  - component: {fileID: 1198569598}
+  - component: {fileID: 1198569597}
+  m_Layer: 0
+  m_Name: AA (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1198569596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198569595}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4, y: 0, z: -2.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1187391534}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1198569597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198569595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3644fdae229b649468a5b78af576676a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interaccion: {fileID: 633987594}
+  cambio: 0
+  ObjetoACambiar1: {fileID: 1187391533}
+  ObjetoACambiar2: {fileID: 119780223}
+  Azul: 1
+  Naranja: 0
+  InputAltar: {fileID: 224177552}
+  cambiodeposicion: {fileID: 1985308836}
+  ObjetoCambiar3Local: {fileID: 775704004}
+  change: {fileID: 0}
+  controlador_blanca: {fileID: 537349078}
+  estaCambiando: 0
+  original: {fileID: 2100000, guid: 55a0c358a91e4c547a17140d47be75f3, type: 2}
+  cambiar: {fileID: 2100000, guid: 44109f4cdecf47149a627019f7da37d9, type: 2}
+  blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  StartColor: {r: 0.227451, g: 0.23529413, b: 0.24313727, a: 0}
+  EndColor: {r: 0.039215688, g: 0.9333334, b: 0.9607844, a: 0}
+  IInput: {fileID: 0}
+  ObjetoContadorBlanca: {fileID: 537349078}
+  nocambio: 0
+  yaheentrado: 0
+  intermedioBlanco: {fileID: 250663013}
+  pararcorrutina: 0
+--- !u!65 &1198569598
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198569595}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.61, y: 2.35, z: 4.97}
+  m_Center: {x: 0, y: 0, z: 1.05}
 --- !u!1 &1260377713
 GameObject:
   m_ObjectHideFlags: 0
@@ -15116,6 +15201,87 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637658293}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1711216166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1711216167}
+  - component: {fileID: 1711216169}
+  - component: {fileID: 1711216168}
+  m_Layer: 0
+  m_Name: NN (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1711216167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711216166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 22846698}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1711216168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711216166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3644fdae229b649468a5b78af576676a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interaccion: {fileID: 633987594}
+  cambio: 0
+  ObjetoACambiar1: {fileID: 22846697}
+  ObjetoACambiar2: {fileID: 775704004}
+  Azul: 0
+  Naranja: 1
+  InputAltar: {fileID: 224177552}
+  cambiodeposicion: {fileID: 1489482454}
+  ObjetoCambiar3Local: {fileID: 119780223}
+  change: {fileID: 0}
+  controlador_blanca: {fileID: 537349078}
+  estaCambiando: 0
+  original: {fileID: 2100000, guid: 55a0c358a91e4c547a17140d47be75f3, type: 2}
+  cambiar: {fileID: 2100000, guid: 5f4c3da7d3aae8b48a07a494279eb0e6, type: 2}
+  blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  StartColor: {r: 0.227451, g: 0.23529413, b: 0.24313727, a: 0}
+  EndColor: {r: 0.9725491, g: 0.5921569, b: 0.039215688, a: 0}
+  IInput: {fileID: 0}
+  ObjetoContadorBlanca: {fileID: 537349078}
+  nocambio: 0
+  yaheentrado: 0
+  intermedioBlanco: {fileID: 250663013}
+  pararcorrutina: 0
+--- !u!65 &1711216169
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711216166}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.61, y: 2.35, z: 4.97}
+  m_Center: {x: 0, y: 0, z: 1.05}
 --- !u!1 &1733688511
 GameObject:
   m_ObjectHideFlags: 0
@@ -15946,6 +16112,7 @@ MonoBehaviour:
   input: {fileID: 0}
   original: {fileID: 2100000, guid: 55a0c358a91e4c547a17140d47be75f3, type: 2}
   cambio: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  Local: {fileID: 1711216166}
   intermedioBlanco: {fileID: 250663013}
 --- !u!114 &1982616905
 MonoBehaviour:
@@ -15978,6 +16145,7 @@ MonoBehaviour:
   EndColor: {r: 0.972549, g: 0.5921569, b: 0.039215688, a: 1}
   IInput: {fileID: 0}
   ObjetoContadorBlanca: {fileID: 537349078}
+  valor: 0
   nocambio: 0
   yaheentrado: 0
   intermedioBlanco: {fileID: 250663013}

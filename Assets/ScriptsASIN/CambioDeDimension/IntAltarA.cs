@@ -24,6 +24,8 @@ public class IntAltarA : MonoBehaviourPunCallbacks
     public Material cambio;
     //CambioColorAltarA controladordelcambio;
     InterAltar Altarasincrono;
+    public GameObject Local;
+    CambioAltarLocal Altarasincronolocal;
     PhotonView view;
     PhotonView owner;
     private GameObject objeto;
@@ -58,6 +60,7 @@ public class IntAltarA : MonoBehaviourPunCallbacks
         Material1 = ObjetoACambiar1.GetComponent<Renderer>().material;
         //controladordelcambio = GetComponent<CambioColorAltarA>();
         Altarasincrono = GetComponent<InterAltar>();
+        Altarasincronolocal = Local.GetComponent<CambioAltarLocal>();
         view = GetComponent<PhotonView>();
 
     }
@@ -73,7 +76,7 @@ public class IntAltarA : MonoBehaviourPunCallbacks
     //    inputhandler = player.GetComponent<InputHandler>();
     //}
 
-    [PunRPC]
+    
     private void OnTriggerStay(Collider other)
     {
 
@@ -139,8 +142,9 @@ public class IntAltarA : MonoBehaviourPunCallbacks
             }
 
             bool nocambioActivar = true;
-            if (input_player._jugadorinteraccion && hacer)
+            if (input_player._jugadorinteraccion && hacer) { 
                 pv.RPC("VariableJugador", RpcTarget.All, viewId);
+                }
             //if (input_player._jugadorinteraccion && nocambioActivar)
             //{
             //    Altarasincrono.nocambio = false;
@@ -148,7 +152,7 @@ public class IntAltarA : MonoBehaviourPunCallbacks
             //}
             //else if(!input_player._jugadorinteraccion && !nocambioActivar)
             //{
-                
+
             //    nocambioActivar = true;
             //}
 
@@ -156,10 +160,12 @@ public class IntAltarA : MonoBehaviourPunCallbacks
             //    intermediario.poderPonerseBlanco = 1;
 
             Altarasincrono.cambio = input_player._jugadorinteraccion;
-           
+            Altarasincrono.cambiocontrolador();
+          //  Altarasincronolocal.cambio = input_player._jugadorinteraccion;
+            //Altarasincronolocal.cambiocontrolador();
 
             //Altarasincrono.cambiocontrolador();
-            pv.RPC("cambiocontrolador", RpcTarget.All);
+            // pv.RPC("cambiocontrolador", RpcTarget.All);
             //this.photonView.RPC("CambioColor", RpcTarget.All);
             //}
 
@@ -184,8 +190,8 @@ public class IntAltarA : MonoBehaviourPunCallbacks
     [PunRPC]
     void VariableJugador(int id)
     {
-
         intermediario.poderPonerseBlanco = 1;
+
         PhotonView pvv = PhotonView.Find(id); // obtiene el PhotonView del jugador remoto
             GameObject playerGO = pvv.gameObject;
             RecogerVariablesJugador playerController = playerGO.GetComponent<RecogerVariablesJugador>();
