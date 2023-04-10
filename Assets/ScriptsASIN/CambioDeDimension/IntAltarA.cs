@@ -141,7 +141,7 @@ public class IntAltarA : MonoBehaviourPunCallbacks
                 pv.RPC("Desactive", RpcTarget.All, viewId);
             }
 
-            bool nocambioActivar = true;
+            
             if (input_player._jugadorinteraccion && hacer) { 
                 pv.RPC("VariableJugador", RpcTarget.All, viewId);
                 }

@@ -714,7 +714,7 @@ public class InterAltar : MonoBehaviourPunCallbacks
 
     public void cambiocontrolador()
     {
-        if (control_blanca.contadorAsin >= 2 && intermediario.poderPonerseBlanco == 1)
+        if ((control_blanca.contadorAsin > 1) && (intermediario.poderPonerseBlanco == 1) )
 
         {
             //StopAllCoroutines();
@@ -848,8 +848,11 @@ public class InterAltar : MonoBehaviourPunCallbacks
         Material2.SetColor("_EmissionColor", EndColor * 1);
         Material2.EnableKeyword("_EMISSION");
 
+        if (Azul)
+            input_player.interaccionAzul = true;
+        else
+            input_player.interaccionNaranja = true;
 
-       
 
         Debug.Log("Estoy en cambiocontroladorotro");
 
@@ -867,7 +870,8 @@ public class InterAltar : MonoBehaviourPunCallbacks
 
         StartCoroutine(ponerablanco());
         EntrarEnCorutinaBlanca = false;
-
+        
+            
         Debug.Log("Estoy en cambiocontroladorblanco");
 
     }
@@ -891,10 +895,9 @@ public class InterAltar : MonoBehaviourPunCallbacks
             Debug.Log("Estoy en ifpoerblanco");
         }
 
+        
+
         Material2.EnableKeyword("_EMISSION");
-
-
-
         Material2.color = blanco.color;
 
         Material2.SetColor("_EmissionColor", Color.white);
@@ -902,7 +905,9 @@ public class InterAltar : MonoBehaviourPunCallbacks
 
         yield return new WaitForSeconds(5f);
         cambiolocalBlanca = true;
+        input_player.interaccionAzul = false;
 
+        input_player.interaccionNaranja = false;
 
         Material2.color = original.color;
         yaheentrado = false;

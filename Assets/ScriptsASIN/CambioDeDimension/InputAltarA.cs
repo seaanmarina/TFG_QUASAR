@@ -73,7 +73,7 @@ public class InputAltarA : MonoBehaviourPunCallbacks
         if (cambiodetiempo)
         {
             Debug.Log("Pico pala aqui estoy");
-            StopAllCoroutines();
+            StopCoroutine(sumarcontadorasinAltar());
            controlblanca.contadorAsin = 0;
             cambiodetiempo = false;
 
@@ -201,7 +201,7 @@ public class InputAltarA : MonoBehaviourPunCallbacks
             //controlblanca.contadorAsin = controlblanca.contadorAsin + -1;
             //controlador = true;
         
-        controlblanca.contadorAsin = controlblanca.contadorAsin + -1;
+        controlblanca.contadorAsin = controlblanca.contadorAsin  -1;
         controlador = true;
         permitido.tiempototal = 0;
         Debug.Log("Estoy en saliendo");

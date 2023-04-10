@@ -88,6 +88,12 @@ MonoBehaviour:
   - VariableJugador
   - Desactive
   - pararcorrrutina
+  - AltarActivo
+  - comprobacionEstado
+  - "<OnTriggerStay>g__A\xF1adiraArray|7_0"
+  - <OnTriggerStay>g__Comprobar|7_1
+  - "A\xF1adiraArray"
+  - Comprobar
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

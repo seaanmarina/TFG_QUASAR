@@ -16,7 +16,8 @@ public class InputHandlerA : MonoBehaviour
     public float Horizontal => _movement.x;
     public float Vertical => _movement.y;
 
-
+    public GameObject controlinputs;
+    InputsAltar  AltarInputs;
 
 
     public bool saltoControlado;
@@ -42,9 +43,13 @@ public class InputHandlerA : MonoBehaviour
     void Start()
     {
         interaccion = GameObject.FindGameObjectWithTag("Interaccion");
+        
         permitido = interaccion.GetComponent<Puede_InteraccionarA>();
 
 
+        controlinputs = GameObject.FindGameObjectWithTag("AltarInputs");
+        AltarInputs = controlinputs.GetComponent<InputsAltar>();
+        
         change = GameObject.FindGameObjectWithTag("CambioDimension");
         cambio_Dimension = change.GetComponent<CambioDimensionA>();
 
@@ -105,6 +110,8 @@ public class InputHandlerA : MonoBehaviour
             //{
             //    permitido.timer = 0;
             //}
+
+            AltarInputs._input = !input_player._input;
 
             input_player._input = !input_player._input;
             input_Altar._input = !input_Altar._input;
