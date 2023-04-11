@@ -29,11 +29,18 @@ public class EstadoAltar : MonoBehaviourPunCallbacks
     public Material original;
 
     public List<int> _miArray = new List<int>();
+
+   
+
+
+
    
    
     // Start is called before the first frame update
     void Start()
     {
+        
+
         Material1 = objetocambiar.GetComponent<Renderer>().material;
         Material2 = objetocambiar2.GetComponent<Renderer>().material;
         pv = gameObject.GetComponent<PhotonView>();

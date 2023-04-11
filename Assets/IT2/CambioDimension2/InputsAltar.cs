@@ -29,10 +29,16 @@ public class InputsAltar : MonoBehaviourPunCallbacks
 
     bool acceder;
 
-    
+    public bool Temporizador;
+    public bool PuedeTemporizador;
+
+
     // Start is called before the first frame update
     void Start()
     {
+
+        Temporizador = false;
+        PuedeTemporizador = true;
 
         Material1 = objetocambiar.GetComponent<Renderer>().material;
         Material2 = objetocambiar2.GetComponent<Renderer>().material;
@@ -64,6 +70,11 @@ public class InputsAltar : MonoBehaviourPunCallbacks
 
 
             InteraccionAltar = _input;
+            if (InteraccionAltar && PuedeTemporizador)
+            {
+                Temporizador = true;
+                PuedeTemporizador = false;
+            }
         }
         else
         {
