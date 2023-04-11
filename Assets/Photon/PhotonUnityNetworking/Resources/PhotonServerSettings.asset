@@ -94,6 +94,7 @@ MonoBehaviour:
   - <OnTriggerStay>g__Comprobar|7_1
   - "A\xF1adiraArray"
   - Comprobar
+  - cambioEstado
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

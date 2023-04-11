@@ -11,20 +11,29 @@ public class EntradaaAltar : MonoBehaviourPunCallbacks
     public bool _entradaNaranja;
     public bool _entradaAzul;
 
+
+    public GameObject estadoAltarObj;
     EstadoAltar estadoaltar;
 
 
     public GameObject controlinputs;
     InputsAltar AltarInputs;
 
+    bool AñadirArray;
+
+    bool canEnter;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        estadoaltar = GetComponent<EstadoAltar>();
+
+        canEnter = true;
         controlinputs = GameObject.FindGameObjectWithTag("AltarInputs");
         AltarInputs = controlinputs.GetComponent<InputsAltar>();
+
+        estadoAltarObj = GameObject.FindGameObjectWithTag("AltarInputs");
+        estadoaltar = estadoAltarObj.GetComponent<EstadoAltar>();
     }
 
     // Update is called once per frame
@@ -46,19 +55,23 @@ public class EntradaaAltar : MonoBehaviourPunCallbacks
 
             if (AltarInputs.InteraccionAltar)
             {
-
+                
                 //int longitud = AltarInputs._miArray.Length;
 
                 //int[] nuevoArray = new int[longitud + 1];
 
                 //nuevoArray[longitud + 1] = viewId;
 
-
-
                 pv.RPC("AñadiraArray", RpcTarget.All, viewId);
 
                 pv.RPC("Comprobar", RpcTarget.All);
+
             }
+            //else
+            //{
+            //    canEnter = true;
+            //}
+         
         }
         
 
@@ -68,10 +81,25 @@ public class EntradaaAltar : MonoBehaviourPunCallbacks
     [PunRPC]
     void AñadiraArray(int id)
     {
+        //if (canEnter)
+        //{
+            foreach (int valor in estadoaltar._miArray)
+            {
+                if (valor == id)
+                {
+                    AñadirArray = true;
+                }
+            }
 
-        AltarInputs._miArray.Add(id);
-
-
+            if(!AñadirArray)
+            {
+                estadoaltar._miArray.Add(id);
+                AñadirArray = false;
+            }
+            
+            canEnter = false;
+           
+        //}
     }
 
 
@@ -81,11 +109,11 @@ public class EntradaaAltar : MonoBehaviourPunCallbacks
 
         if (_entradaNaranja)
         {
-            AltarInputs.estadoNaranja = true;
+            estadoaltar.estadoNaranja = true;
         }
         else
         {
-            AltarInputs.estadoAzul = true;
+            estadoaltar.estadoAzul = true;
         }
 
 
@@ -93,7 +121,7 @@ public class EntradaaAltar : MonoBehaviourPunCallbacks
 
     private void OnTriggerExit(Collider other)
     {
-        
+        AltarInputs._puedeInteraccionar = false;
     }
 
 

@@ -6447,7 +6447,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 1
+  OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
   sceneViewId: 39
@@ -6480,7 +6480,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entradaNaranja: 0
   _entradaAzul: 1
-  controlinputs: {fileID: 993024030}
+  estadoAltarObj: {fileID: 0}
+  controlinputs: {fileID: 0}
 --- !u!114 &260360921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14039,7 +14040,6 @@ MonoBehaviour:
   objetocambiar: {fileID: 44960869}
   objetocambiar2: {fileID: 989537590}
   original: {fileID: 2100000, guid: 5f4c3da7d3aae8b48a07a494279eb0e6, type: 2}
-  _miArray: 
 --- !u!114 &993024033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14077,6 +14077,11 @@ MonoBehaviour:
   altarActivado: 0
   estadoAzul: 0
   estadoNaranja: 0
+  objetocambiar: {fileID: 44960869}
+  objetocambiar2: {fileID: 989537590}
+  original: {fileID: 2100000, guid: 5f4c3da7d3aae8b48a07a494279eb0e6, type: 2}
+  _miArray: 
+  _miArrayDuplica: 
 --- !u!1 &998280916
 GameObject:
   m_ObjectHideFlags: 0
@@ -15067,9 +15072,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1286552756}
   - component: {fileID: 1286552760}
-  - component: {fileID: 1286552762}
-  - component: {fileID: 1286552761}
   - component: {fileID: 1286552757}
+  - component: {fileID: 1286552761}
+  - component: {fileID: 1286552762}
   m_Layer: 0
   m_Name: NN
   m_TagString: Untagged
@@ -15141,7 +15146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entradaNaranja: 1
   _entradaAzul: 0
-  controlinputs: {fileID: 993024030}
+  estadoAltarObj: {fileID: 0}
+  controlinputs: {fileID: 0}
 --- !u!114 &1286552762
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public class InputsAltar : MonoBehaviourPunCallbacks
 
     bool acceder;
 
-    public List<int> _miArray = new List<int>();
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -65,47 +65,62 @@ public class InputsAltar : MonoBehaviourPunCallbacks
 
             InteraccionAltar = _input;
         }
-            
-
-         if(estadoAzul && estadoNaranja)    
-            {
-
-                foreach (int valor in _miArray)
-                {
-                    PhotonView pvv = PhotonView.Find(valor); // obtiene el PhotonView del jugador remoto
-                    GameObject playerGO = pvv.gameObject;
-                    Photon.Realtime.Player[] players = PhotonNetwork.PlayerList;
-                    foreach (Photon.Realtime.Player player in players)
-                    {
-
-
-                        PhotonView playerView = PhotonView.Find(player.ActorNumber); // Obtiene el PhotonView del jugador.
-                       
-                        int actorNr = player.ActorNumber;
-                        int viewId = actorNr * PhotonNetwork.MAX_VIEW_IDS + 1;
-
-                        if(viewId == valor)
-                        {
-                            pv.RPC("comprobacionEstado", player);
-                        }
-                    }
-                    }
-            
+        else
+        {
+            InteraccionAltar = false;
         }
+            
+
+        // if(estadoAzul && estadoNaranja)    
+        //    {
+
+        //        foreach (int valor in _miArray)
+        //        {
+        //            PhotonView pvv = PhotonView.Find(valor); // obtiene el PhotonView del jugador remoto
+        //            GameObject playerGO = pvv.gameObject;
+        //            Photon.Realtime.Player[] players = PhotonNetwork.PlayerList;
+        //            foreach (Photon.Realtime.Player player in players)
+        //            {
+
+
+        //                PhotonView playerView = PhotonView.Find(player.ActorNumber); // Obtiene el PhotonView del jugador.
+                       
+        //                int actorNr = player.ActorNumber;
+        //                int viewId = actorNr * PhotonNetwork.MAX_VIEW_IDS + 1;
+
+        //                if(viewId == valor)
+        //                {
+        //                    pv.RPC("comprobacionEstado", player);
+        //                }
+        //            }
+        //            }
+            
+        //}
     }
 
 
-    [PunRPC]
-    void comprobacionEstado()
-    {
-         altarActivado = true;
-        Material1.color = original.color;
-        Material2.color = original.color;
-        Debug.Log("ALTAR TOOOOOOO GUCCIIII");
-        estadoAzul = false;
-        estadoNaranja = false; 
-        _miArray.Clear();
+    //[PunRPC]
+    //void comprobacionEstado()
+    //{
+    //     altarActivado = true;
+    //    Material1.color = original.color;
+    //    Material2.color = original.color;
+    //    Debug.Log("ALTAR TOOOOOOO GUCCIIII");
+    //    //estadoAzul = false;
+    //    //estadoNaranja = false; 
+    //    //_miArray.Clear();
+    //    pv.RPC("cambioEstado", RpcTarget.All);
 
 
-    }
+    //}
+
+
+    //[PunRPC]
+    //void cambioEstado()
+    //{
+    //    _miArray.Clear();
+    //    estadoAzul = false;
+    //    estadoNaranja = false;
+       
+    //}
 }
