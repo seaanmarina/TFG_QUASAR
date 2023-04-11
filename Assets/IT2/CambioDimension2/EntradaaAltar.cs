@@ -23,6 +23,8 @@ public class EntradaaAltar : MonoBehaviourPunCallbacks
 
     bool canEnter;
 
+    ColorLocal CambioColorLocal;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,8 @@ public class EntradaaAltar : MonoBehaviourPunCallbacks
         canEnter = true;
         controlinputs = GameObject.FindGameObjectWithTag("AltarInputs");
         AltarInputs = controlinputs.GetComponent<InputsAltar>();
+
+        CambioColorLocal = GetComponent<ColorLocal>();
 
         estadoAltarObj = GameObject.FindGameObjectWithTag("AltarInputs");
         estadoaltar = estadoAltarObj.GetComponent<EstadoAltar>();
@@ -48,14 +52,16 @@ public class EntradaaAltar : MonoBehaviourPunCallbacks
         PhotonView phView = other.gameObject.GetComponent<PhotonView>();
         if (PhotonNetwork.LocalPlayer.ActorNumber == other.GetComponent<PhotonView>().Owner.ActorNumber)
         {
+            CambioColorLocal.cambiocontrolador();
             PhotonView pv = gameObject.GetComponent<PhotonView>();
             AltarInputs._puedeInteraccionar = true;
             int actorNr = other.GetComponent<PhotonView>().Owner.ActorNumber;
             int viewId = actorNr * PhotonNetwork.MAX_VIEW_IDS + 1;
-
+            CambioColorLocal.CambioColorLocal = AltarInputs.InteraccionAltar;
             if (AltarInputs.InteraccionAltar)
             {
                 
+
                 //int longitud = AltarInputs._miArray.Length;
 
                 //int[] nuevoArray = new int[longitud + 1];
@@ -82,23 +88,28 @@ public class EntradaaAltar : MonoBehaviourPunCallbacks
     void AñadiraArray(int id)
     {
         //if (canEnter)
-        //{
+
+        
+       
             foreach (int valor in estadoaltar._miArray)
-            {
+            { Debug.Log("ALTAR HAGO FOR");
                 if (valor == id)
                 {
-                    AñadirArray = true;
+                Debug.Log("ALTAR HAGO IF");
+                AñadirArray = true;
                 }
             }
 
             if(!AñadirArray)
             {
-                estadoaltar._miArray.Add(id);
+            Debug.Log("ALTAR HAGO IF SEGUNDO");
+            estadoaltar._miArray.Add(id);
                 AñadirArray = false;
-            }
+
+        }
             
             canEnter = false;
-           
+            AñadirArray = false;
         //}
     }
 
@@ -121,6 +132,7 @@ public class EntradaaAltar : MonoBehaviourPunCallbacks
 
     private void OnTriggerExit(Collider other)
     {
+        CambioColorLocal.CambioColorLocal = false;
         AltarInputs._puedeInteraccionar = false;
     }
 

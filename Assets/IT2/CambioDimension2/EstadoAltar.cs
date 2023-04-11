@@ -6,7 +6,7 @@ using Photon.Realtime;
 public class EstadoAltar : MonoBehaviourPunCallbacks
 {
     [SerializeField]
-    private bool altarActivado;
+    public bool altarActivado;
 
 
     public bool estadoAzul;
@@ -61,6 +61,7 @@ public class EstadoAltar : MonoBehaviourPunCallbacks
         {
             pv.RPC("cambioEstado", RpcTarget.All);
             PuedeBorrar = false;
+            
         }
 
 
@@ -68,6 +69,7 @@ public class EstadoAltar : MonoBehaviourPunCallbacks
        
         if (estadoAzul && estadoNaranja)
         {
+            altarActivado = true;
             estadoAzul = false;
             estadoNaranja = false;
             PuedeBorrar = true;
@@ -98,7 +100,7 @@ public class EstadoAltar : MonoBehaviourPunCallbacks
     [PunRPC]
     void comprobacionEstado()
     {
-        altarActivado = true;
+        
         Material1.color = original.color;
         Material2.color = original.color;
         Debug.Log("ALTAR TOOOOOOO GUCCIIII");
@@ -118,6 +120,7 @@ public class EstadoAltar : MonoBehaviourPunCallbacks
         _miArray.Clear();
         estadoAzul = false;
         estadoNaranja = false;
+      //  altarActivado = false; PONER EN TRUE EN ALGUN MOMENTO
 
     }
 

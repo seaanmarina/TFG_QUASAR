@@ -504,10 +504,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 44960874}
+  - component: {fileID: 44960870}
   - component: {fileID: 44960873}
   - component: {fileID: 44960872}
   - component: {fileID: 44960871}
-  - component: {fileID: 44960870}
   m_Layer: 0
   m_Name: A
   m_TagString: Untagged
@@ -6494,6 +6494,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0285c2d997a1c7949af8dcb123e799e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CambioColorLocal: 0
+  ObjetoACambiar1: {fileID: 989537590}
+  ObjetoACambiar2: {fileID: 44960869}
+  original: {fileID: 2100000, guid: 55a0c358a91e4c547a17140d47be75f3, type: 2}
+  cambiar: {fileID: 2100000, guid: 44109f4cdecf47149a627019f7da37d9, type: 2}
+  blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  StartColor: {r: 0.22745098, g: 0.23529412, b: 0.24313726, a: 0}
+  EndColor: {r: 0.039215688, g: 0.93333334, b: 0.9607843, a: 0}
+  estadoAltarObj: {fileID: 0}
 --- !u!1 &325671502
 GameObject:
   m_ObjectHideFlags: 0
@@ -6534,6 +6543,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 338463019}
+  - component: {fileID: 338463020}
   m_Layer: 0
   m_Name: ALTARES
   m_TagString: Untagged
@@ -6559,6 +6569,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &338463020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338463018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 43
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &422861183
 GameObject:
   m_ObjectHideFlags: 0
@@ -14081,7 +14113,6 @@ MonoBehaviour:
   objetocambiar2: {fileID: 989537590}
   original: {fileID: 2100000, guid: 5f4c3da7d3aae8b48a07a494279eb0e6, type: 2}
   _miArray: 
-  _miArrayDuplica: 
 --- !u!1 &998280916
 GameObject:
   m_ObjectHideFlags: 0
@@ -15160,6 +15191,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0285c2d997a1c7949af8dcb123e799e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CambioColorLocal: 0
+  ObjetoACambiar1: {fileID: 1386854572}
+  ObjetoACambiar2: {fileID: 1219416207}
+  original: {fileID: 2100000, guid: 55a0c358a91e4c547a17140d47be75f3, type: 2}
+  cambiar: {fileID: 2100000, guid: 5f4c3da7d3aae8b48a07a494279eb0e6, type: 2}
+  blanco: {fileID: 2100000, guid: d264a9e073e09a94fa54fd0a0218384a, type: 2}
+  StartColor: {r: 0.22745098, g: 0.23529412, b: 0.24313726, a: 0}
+  EndColor: {r: 0.972549, g: 0.5921569, b: 0.039215688, a: 0}
+  estadoAltarObj: {fileID: 0}
 --- !u!1 &1386854572
 GameObject:
   m_ObjectHideFlags: 0

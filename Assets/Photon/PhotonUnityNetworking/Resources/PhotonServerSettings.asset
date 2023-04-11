@@ -95,6 +95,8 @@ MonoBehaviour:
   - "A\xF1adiraArray"
   - Comprobar
   - cambioEstado
+  - <Update>g__CambiarColorPublico|13_0
+  - CambiarColorPublico
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
