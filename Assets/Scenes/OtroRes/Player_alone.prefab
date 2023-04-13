@@ -4823,6 +4823,7 @@ GameObject:
   - component: {fileID: 5057804474339393626}
   - component: {fileID: 171736030096241194}
   - component: {fileID: 8458346539487286309}
+  - component: {fileID: 8907777456548062533}
   - component: {fileID: 5057804474339393627}
   - component: {fileID: 5057804474339393620}
   - component: {fileID: 5057804474339393621}
@@ -4869,6 +4870,9 @@ MonoBehaviour:
   jugadorinteraccion: 0
   _salto: 0
   _puedeInteraccionar: 0
+  controlinputs: {fileID: 0}
+  saltoControlado: 0
+  puedeInteraccion: 0
   input: {fileID: 0}
   change: {fileID: 0}
   inputaltar: {fileID: 0}
@@ -4882,6 +4886,18 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be9ee42ca61c36943b810aae2a311f63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8907777456548062533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057804474339393617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7283a26aee202034ba3011d6d68b699f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &5057804474339393627

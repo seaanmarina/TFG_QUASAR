@@ -22,7 +22,8 @@ public class InputHandlerA : MonoBehaviour
 
     public bool saltoControlado;
 
-
+    public bool InteraccionCambio;
+    public bool puedeInteraccion;
 
 
     Puede_InteraccionarA permitido;
@@ -39,10 +40,17 @@ public class InputHandlerA : MonoBehaviour
     public GameObject inputaltar;
 
 
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
-        interaccion = GameObject.FindGameObjectWithTag("Interaccion");
+        InteraccionCambio = false;
+
+        puedeInteraccion = false;
+
+         interaccion = GameObject.FindGameObjectWithTag("Interaccion");
         
         permitido = interaccion.GetComponent<Puede_InteraccionarA>();
 
@@ -102,10 +110,11 @@ public class InputHandlerA : MonoBehaviour
     [PunRPC]
     void OnInteraccionar()
     {
-
+        
         if (view.IsMine)
         {
-
+            PhotonView pv = gameObject.GetComponent<PhotonView>();
+            InteraccionCambio = !InteraccionCambio;
             //if (!input_player._input)
             //{
             //    permitido.timer = 0;
@@ -117,39 +126,36 @@ public class InputHandlerA : MonoBehaviour
             input_Altar._input = !input_Altar._input;
 
             contador = !contador;
-            //if (input_player._puedeInteraccionar)
-            //{
-            //    if (input_player._input && !contador)
-            //    {
-            //        permitido.timer = Time.time;
-            //        contador = true;
 
-            //    }
-            //    if (contador && !input_player._input)
-            //    {
-            //        permitido.timer2 = Time.time;
-            //        contador = false;
-            //        permitido.tiempototal = permitido.timer2 - permitido.timer;
-            //    }
-            //}
-         //   cambio_Dimension.permitidoCambiar = !cambio_Dimension.permitidoCambiar;
+            if (puedeInteraccion)
+            {
+
+                pv.RPC("InteraccionPlayer", RpcTarget.All, InteraccionCambio);
+
+            }
+
         }
 
 
-        //if (_puedeInteraccionar && view.IsMine)
-        //{
-
-        //    jugadorinteraccion = !jugadorinteraccion;
-        //    // _cambiodecolor = !_cambiodecolor;
-        //    // Debug.Log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-        //    //  base.photonView.RPC("cambiodecolor", RpcTarget.All);
-        //    //// Debug.Log(_cambiodecolor);
-
-
-        //}
+       
 
 
 
+    }
+ [PunRPC]
+        void InteraccionPlayer(bool valor)
+        {
+            
+            int actorNr = view.OwnerActorNr;
+            int viewId = actorNr * PhotonNetwork.MAX_VIEW_IDS + 1;
+
+
+            Debug.Log("INPUT HANDLER A TOPEEEEEEEEE" + viewId);
+
+            PhotonView pvv = PhotonView.Find(viewId); // obtiene el PhotonView del jugador remoto
+            GameObject playerGO = pvv.gameObject;
+            RecogerVariablesJugador playerController = playerGO.GetComponent<RecogerVariablesJugador>();
+            playerController.InteraccionInputHandler = valor;
 
     }
 

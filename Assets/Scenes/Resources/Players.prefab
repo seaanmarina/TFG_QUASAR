@@ -106,6 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   booleanaPonerseBlanco: 0
+  Interaccion: 0
+  InteraccionInputHandler: 0
 --- !u!1 &630482555709704229
 GameObject:
   m_ObjectHideFlags: 0

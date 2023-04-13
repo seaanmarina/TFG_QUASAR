@@ -8,6 +8,8 @@ public class RecogerVariablesJugador : MonoBehaviourPunCallbacks
 
    
     public bool booleanaPonerseBlanco;
+    public bool Interaccion;
+    public bool InteraccionInputHandler;
 
 
     // Start is called before the first frame update

@@ -12,6 +12,7 @@ TagManager:
   - Interaccion
   - Intermediario
   - AltarInputs
+  - Entrada
   layers:
   - Default
   - TransparentFX

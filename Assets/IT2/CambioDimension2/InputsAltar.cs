@@ -68,7 +68,8 @@ public class InputsAltar : MonoBehaviourPunCallbacks
         if (_puedeInteraccionar)
         {
 
-
+            PhotonView pv = gameObject.GetComponent<PhotonView>();
+            pv.RPC("comprobacionEstados", RpcTarget.All);
             InteraccionAltar = _input;
             if (InteraccionAltar && PuedeTemporizador)
             {
@@ -110,20 +111,12 @@ public class InputsAltar : MonoBehaviourPunCallbacks
     }
 
 
-    //[PunRPC]
-    //void comprobacionEstado()
-    //{
-    //     altarActivado = true;
-    //    Material1.color = original.color;
-    //    Material2.color = original.color;
-    //    Debug.Log("ALTAR TOOOOOOO GUCCIIII");
-    //    //estadoAzul = false;
-    //    //estadoNaranja = false; 
-    //    //_miArray.Clear();
-    //    pv.RPC("cambioEstado", RpcTarget.All);
+    [PunRPC]
+    void comprobacionEstados()
+    {
+        InteraccionAltar = _input;
 
-
-    //}
+    }
 
 
     //[PunRPC]
@@ -132,6 +125,6 @@ public class InputsAltar : MonoBehaviourPunCallbacks
     //    _miArray.Clear();
     //    estadoAzul = false;
     //    estadoNaranja = false;
-       
+
     //}
 }
